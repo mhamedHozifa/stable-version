@@ -18,7 +18,7 @@ public function up()
         $table->boolean('is_featured')->default(false);
         $table->decimal('price', 10, 2); // السعر (10 أرقام، 2 بعد الفاصلة)
         $table->integer('stock')->default(0); // الكمية في المخزون
-      //  $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null'); // ربط مع التصنيفات (سننشئها لاحقاً)
+       // $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null'); // ربط مع التصنيفات (سننشئها لاحقاً)
         $table->string('image')->nullable(); // مسار الصورة
         $table->timestamps(); // created_at و updated_at
     });
