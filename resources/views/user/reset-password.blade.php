@@ -44,7 +44,7 @@
         </form>
 
         <div class="links">
-            <a href="{{ route('login') }}">Back to Login</a>
+            <a href="{{ route('user.login.form') }}">Back to Login</a>
         </div>
     </div>
 </body>

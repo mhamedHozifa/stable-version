@@ -51,7 +51,9 @@ Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])
 ->name('user.forgot');
 
 Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])
-->name('user.reset.form');
+->name('password.reset'); /* you shouuuld name the route exactly "password.reset"
+because there is a method called "$status = Password::sendResetLink(" that appearently doesnt accept
+by default any route name but "password.reset" for a reason i dont know */ 
 
 Route::post('/reset-password', [AuthController::class, 'reset'])
 ->name('user.reset');

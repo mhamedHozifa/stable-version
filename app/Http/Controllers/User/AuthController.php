@@ -44,7 +44,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirect to intended page or home
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/browsing');
     }
 
     /**
@@ -72,7 +72,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect to intended page
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/browsing');
         }
 
         // Authentication failed
@@ -159,7 +159,7 @@ class AuthController extends Controller
 
         // Check the status and redirect
         return $status === Password::PASSWORD_RESET
-            ? redirect()->route('login')->with('status', __($status))
+            ? redirect()->route('user.login.form')->with('status', __($status))
             : back()->withErrors(['email' => [__($status)]]);
     }
 }
