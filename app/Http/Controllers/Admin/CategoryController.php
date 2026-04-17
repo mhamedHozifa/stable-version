@@ -63,4 +63,8 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
+      public function editData(Category $category)
+     {
+     return response()->json($category);
+     }
 }
