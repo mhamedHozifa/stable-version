@@ -162,6 +162,12 @@ class AuthController extends Controller
             ? redirect()->route('user.login.form')->with('status', __($status))
             : back()->withErrors(['email' => [__($status)]]);
     }
+
+    // this form is just for testing
+    public function showLogoutForm()
+    {
+        return view('user.logout-test');
+    }
 }
 
 ////

@@ -57,3 +57,7 @@ by default any route name but "password.reset" for a reason i dont know */
 
 Route::post('/reset-password', [AuthController::class, 'reset'])
 ->name('user.reset');
+
+// this is a test only route for the logout
+Route::get('/logout-form', [AuthController::class, 'showLogoutForm'])
+->name('user.logout.form');
