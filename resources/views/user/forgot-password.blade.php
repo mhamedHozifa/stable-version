@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <!-- Combined styles -->
-    <link rel="stylesheet" href="{{ asset('css/admin-login.css') }}">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{{ asset('css/user-forgot-password.css') }}">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Admin Login</h2>
+    <div class="forgot-container">
+        <h2>Reset Password</h2>
 
-        {{-- Display validation errors --}}
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -22,8 +26,9 @@
             </div>
         @endif
 
-        {{-- Login form --}}
-        <form method="POST" action="{{ route('admin.login') }}">
+        <p class="info-text">Enter your email address and we'll send you a link to reset your password.</p>
+
+        <form method="POST" action="{{ route('user.forgot') }}">
             @csrf
 
             <div class="form-group">
@@ -31,13 +36,12 @@
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus>
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-
-            <button type="submit">Login</button>
+            <button type="submit">Send Password Reset Link</button>
         </form>
+
+        <div class="links">
+            <a href="{{ route('user.login.form') }}">Back to Login</a>
+        </div>
     </div>
 </body>
 </html>

@@ -24,7 +24,7 @@ class AdminLoginController extends Controller
         'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('admin/products');
         }
