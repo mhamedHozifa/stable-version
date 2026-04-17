@@ -7,13 +7,13 @@
         <h1>Manage Products</h1>
         <button class="btn btn-primary" onclick="openModal('create')">Add New Product</button>
 
-       
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Category</th>      <!-- أضفنا عمود التصنيف -->
                     <th>Stock</th>
                     <th>Featured</th>
                     <th>Image</th>
@@ -26,6 +26,7 @@
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td>${{ number_format($product->price, 2) }}</td>
+                    <td>{{ $product->category->name ?? 'N/A' }}</td>   <!-- عمود التصنيف -->
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->is_featured ? 'Yes' : 'No' }}</td>
                     <td>
@@ -42,7 +43,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7">No products found.</td>
+                    <td colspan="8">No products found.</td>   <!-- زاد العدد إلى 8 -->
                 </tr>
                 @endforelse
             </tbody>
@@ -66,6 +67,16 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required maxlength="255" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="category_id">Category</label>
+                    <select name="category_id" id="category_id" class="form-control">
+                        <option value="">No Category</option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -132,10 +143,12 @@
                 form.action = "{{ route('products.store') }}";
                 methodField.value = 'POST';
                 productIdField.value = '';
+                // تفريغ جميع الحقول
                 document.getElementById('name').value = '';
                 document.getElementById('description').value = '';
                 document.getElementById('price').value = '';
                 document.getElementById('stock').value = 0;
+                document.getElementById('category_id').value = '';   // إضافة تفريغ التصنيف
                 document.getElementById('is_featured').checked = false;
                 document.getElementById('imagePreview').innerHTML = '';
             } else if (action === 'edit' && productId) {
@@ -147,19 +160,20 @@
                 fetch(`/admin/products/${productId}/edit-data`)
                     .then(response => response.json())
                     .then(data => {
+                        console.log(data);
                         document.getElementById('name').value = data.name;
                         document.getElementById('description').value = data.description;
                         document.getElementById('price').value = data.price;
                         document.getElementById('stock').value = data.stock;
+                        document.getElementById('category_id').value = data.category_id;  // تعيين التصنيف (بدون سطر فارغ)
                         document.getElementById('is_featured').checked = data.is_featured == 1;
                         if (data.image) {
-                         document.getElementById('imagePreview').innerHTML = `<img src="/storage/${data.image}" width="100">`;
+                            document.getElementById('imagePreview').innerHTML = `<img src="/storage/${data.image}" width="100">`;
                         } else {
-                         document.getElementById('imagePreview').innerHTML = '';
-                               }
-                        
-                        
-                    });
+                            document.getElementById('imagePreview').innerHTML = '';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
             }
             modal.style.display = 'block';
         }

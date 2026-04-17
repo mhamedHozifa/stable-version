@@ -15,6 +15,10 @@ Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 Route::prefix('admin')->middleware(['AdminProtectMiddleware'])->group(function () {
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
     Route::get('/products/{product}/edit-data', [App\Http\Controllers\Admin\ProductController::class, 'editData'])->name('products.edit-data');
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class); 
+    Route::get('/categories/{category}/edit-data', [App\Http\Controllers\Admin\CategoryController::class, 'editData'])->name('categories.edit-data');
+
+    
 });
 
 /*
