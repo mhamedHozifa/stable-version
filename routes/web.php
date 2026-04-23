@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AdminLoginController::class, 'create'])
@@ -10,14 +11,17 @@ Route::get('/admin/login', [AdminLoginController::class, 'create'])
 Route::post('/admin/login', [AdminLoginController::class, 'store'])
 ->name('admin.login');
 
-Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
+
 
 Route::prefix('admin')->middleware(['AdminProtectMiddleware'])->group(function () {
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
     Route::get('/products/{product}/edit-data', [App\Http\Controllers\Admin\ProductController::class, 'editData'])->name('products.edit-data');
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class); 
     Route::get('/categories/{category}/edit-data', [App\Http\Controllers\Admin\CategoryController::class, 'editData'])->name('categories.edit-data');
-
+    /* logout route should be protected with the middleware because it exists inside the admin
+    dashboard page which doesnt allow any route that is not protected with the 
+    amiddleware */
+    Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
     
 });
 
@@ -42,6 +46,9 @@ Route::post('/register', [AuthController::class, 'register'])
 Route::get('/', [AuthController::class, 'showLoginForm'])
 ->name('user.login.form');
 
+Route::get('/login', [AuthController::class, 'showLoginForm'])
+->name('login');
+
 Route::post('/', [AuthController::class, 'login'])
 ->name('user.login');
 // not tested until now because there is no user view to add the logout button to yet
@@ -65,3 +72,8 @@ Route::post('/reset-password', [AuthController::class, 'reset'])
 // this is a test only route for the logout
 Route::get('/logout-form', [AuthController::class, 'showLogoutForm'])
 ->name('user.logout.form');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});

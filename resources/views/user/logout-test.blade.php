@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="reset-container">
+        <div style="margin-bottom: 16px;">
+            <a href="{{ route('profile.edit') }}">My Profile</a>
+        </div>
 
         @if ($errors->any())
             <div class="alert alert-danger">
