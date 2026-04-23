@@ -135,9 +135,117 @@ body {
     color: #6b7280;
 }
 
+/* ========== PAGINATION - أحدث تصميم (أزرار دائرية، صغيرة، ذات ألوان الموقع الأصلية) ========== */
 .pagination-wrap {
-    margin: 22px 0 30px;
+    margin: 32px 0 40px;
 }
+
+/* إعادة تعيين تنسيقات Laravel الافتراضية */
+.pagination-wrap nav,
+.pagination-wrap .pagination,
+.pagination-wrap ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* جميع عناصر التنقل - أزرار دائرية */
+.pagination-wrap a,
+.pagination-wrap span,
+.pagination-wrap .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b5563;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 9999px; /* دائرية بالكامل */
+    text-decoration: none;
+    transition: all 0.2s ease;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* الأسهم (Prev / Next) */
+.pagination-wrap a:first-child,
+.pagination-wrap a:last-child {
+    font-size: 18px;
+    font-weight: 400;
+    background: #f9fafb;
+    border-color: #e5e7eb;
+    min-width: 34px;
+    height: 34px;
+}
+
+/* Hover على الأرقام والأسهم */
+.pagination-wrap a:hover,
+.pagination-wrap .page-link:hover {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Hover خاص بالسهمين - لون أصلي للموقع */
+.pagination-wrap a:first-child:hover,
+.pagination-wrap a:last-child:hover {
+    background-color: #eff6ff;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+/* الصفحة الحالية (active) - باللون الأزرق الأصلي */
+.pagination-wrap .active span,
+.pagination-wrap span[aria-current="page"] {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    font-weight: 600;
+}
+
+/* للصفحات المعطلة مثل "..." */
+.pagination-wrap .disabled span,
+.pagination-wrap span.disabled {
+    color: #cbd5e1;
+    cursor: default;
+    background: transparent;
+}
+
+/* تحسين عرض النقاط */
+.pagination-wrap .dots {
+    letter-spacing: 2px;
+}
+
+/* استجابة للجوال */
+@media (max-width: 640px) {
+    .pagination-wrap a,
+    .pagination-wrap span,
+    .pagination-wrap .page-link {
+        min-width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+    .pagination-wrap a:first-child,
+    .pagination-wrap a:last-child {
+        min-width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    .pagination-wrap {
+        margin: 24px 0 32px;
+    }
+}
+/* ========== نهاية الـ pagination ========== */
 
 .breadcrumbs {
     display: flex;
