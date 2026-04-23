@@ -117,4 +117,19 @@ public function update(Request $request, Product $product)
     {
        return response()->json($product);
     }
+
+    public function publicIndex()
+    {
+        $products = Product::query()
+            ->select(['id', 'name', 'price', 'image', 'description', 'created_at'])
+            ->latest()
+            ->paginate(12);
+
+        return view('products.index', compact('products'));
+    }
+
+    public function publicShow(Product $product)
+    {
+        return view('products.show', compact('product'));
+    }
 }
