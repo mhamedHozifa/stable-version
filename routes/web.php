@@ -77,7 +77,7 @@ Route::get('/logout-form', [AuthController::class, 'showLogoutForm'])
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/products', [ProductController::class, 'publicIndex'])->name('shop.products.index');
+    Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
 });
 
-Route::get('/products', [ProductController::class, 'publicIndex'])->name('shop.products.index');
-Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
