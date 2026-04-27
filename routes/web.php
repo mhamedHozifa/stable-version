@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\AuthController;
+use App\Models\Order; // Needed for route model binding type hints
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,13 @@ Route::prefix('admin')->middleware(['AdminProtectMiddleware'])->group(function (
     dashboard page which doesnt allow any route that is not protected with the 
     amiddleware */
     Route::post('/logout', [AdminLoginController::class, 'logout'])->name('logout');
-    
+
+    // Order management routes
+    Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+    Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.status');
+    Route::post('/orders/{order}/refund', [OrderController::class, 'refund'])->name('admin.orders.refund');
+    Route::get('/orders/{order}/packing-slip', [OrderController::class, 'packingSlip'])->name('admin.orders.packing-slip');
 });
 
 /*
