@@ -2,7 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
-    <h1 class="h3 mb-4 text-gray-800">Order Details - #{{ $order->order_number }}</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Order Details - #{{ $order->order_number }}</h1>
+        <a href="{{ route('admin.orders.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Back to Orders List
+        </a>
+    </div>
 
     @if (session('success'))
         <div class="alert alert-success" role="alert">
