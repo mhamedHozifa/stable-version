@@ -220,6 +220,10 @@ body {
     cursor: default;
     background: transparent;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 523ffac30e12cbe3ce7ae5264ad9e576735b4f83
 /* تحسين عرض النقاط */
 .pagination-wrap .dots {
     letter-spacing: 2px;

@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\User\AuthController;
 use App\Models\Order; // Needed for route model binding type hints
 use App\Http\Controllers\User\ProfileController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AdminLoginController::class, 'create'])
@@ -17,6 +19,14 @@ Route::post('/admin/login', [AdminLoginController::class, 'store'])
 
 
 Route::prefix('admin')->middleware(['AdminProtectMiddleware'])->group(function () {
+    Route::get('/', function () {
+            return view('admin.dashboard', [
+                'productsCount' => Product::count(),
+                'categoriesCount' => Category::count(),
+                'featuredCount' => Product::where('is_featured', true)->count(),
+                'lowStockCount' => Product::where('stock', '<=', 5)->count(),
+            ]);
+        })->name('dashboard');
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
     Route::get('/products/{product}/edit-data', [App\Http\Controllers\Admin\ProductController::class, 'editData'])->name('products.edit-data');
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class); 
@@ -85,7 +95,7 @@ Route::get('/logout-form', [AuthController::class, 'showLogoutForm'])
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/products', [ProductController::class, 'publicIndex'])->name('shop.products.index');
-    Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
 });
 
+Route::get('/products', [ProductController::class, 'publicIndex'])->name('shop.products.index');
+Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
