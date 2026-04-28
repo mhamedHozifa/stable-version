@@ -44,7 +44,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirect to intended page or home
-        return redirect()->intended('/browsing');
+        return redirect()->intended('/products');
     }
 
     /**
@@ -72,7 +72,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect to intended page
-            return redirect()->intended('/browsing');
+            return redirect()->intended('/products');
         }
 
         // Authentication failed
