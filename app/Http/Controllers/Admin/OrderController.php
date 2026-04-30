@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\OrderItem; // Potentially needed for refund logic, but not directly for controller actions
+use App\Models\OrderItem;
 use App\Models\Refund;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; // For transactions if needed
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -41,7 +41,7 @@ class OrderController extends Controller
             $query->whereDate('created_at', '<=', $request->end_date);
         }
 
-        $orders = $query->latest()->paginate(10); // Paginate results
+        $orders = $query->latest()->paginate(10);
 
         $statuses = [
             'pending', 'processing', 'shipped', 'delivered', 'cancelled', 'refunded'
@@ -55,7 +55,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $order->load(['user', 'items.product', 'refunds']); // Eager load relationships
+        $order->load(['user', 'items.product', 'refunds']);
 
         $statuses = [
             'pending', 'processing', 'shipped', 'delivered', 'cancelled', 'refunded'
@@ -76,9 +76,6 @@ class OrderController extends Controller
         $order->status = $request->status;
         $order->save();
 
-        // Optionally trigger notification to customer
-        // Notification::send($order->user, new OrderStatusUpdated($order));
-
         return redirect()->back()->with('success', 'Order status updated successfully.');
     }
 
@@ -92,24 +89,23 @@ class OrderController extends Controller
             'reason' => ['nullable', 'string', 'max:500'],
         ]);
 
-        // Create refund record
-        Refund::create([
-            'order_id' => $order->id,
-            'amount' => $request->amount,
-            'reason' => $request->reason,
-            'status' => 'processed', // Assuming immediate processing for this simplified version
-            'processed_at' => now(),
-        ]);
+        DB::transaction(function () use ($request, $order) {
+            Refund::create([
+                'order_id' => $order->id,
+                'amount' => $request->amount,
+                'reason' => $request->reason,
+                'status' => 'processed',
+                'processed_at' => now(),
+            ]);
 
-        // Update order payment status
-        if ($request->amount == $order->total) {
-            $order->payment_status = 'refunded';
-            $order->status = 'refunded'; // Also set order status to refunded if full refund
-        } else {
-            $order->payment_status = 'partial_refund';
-            // Order status might remain 'delivered' or 'cancelled' depending on business logic for partial refunds
-        }
-        $order->save();
+            if ($request->amount == $order->total) {
+                $order->payment_status = 'refunded';
+                $order->status = 'refunded';
+            } else {
+                $order->payment_status = 'partial_refund';
+            }
+            $order->save();
+        });
 
         return redirect()->back()->with('success', 'Refund processed successfully.');
     }
@@ -119,7 +115,7 @@ class OrderController extends Controller
      */
     public function packingSlip(Order $order)
     {
-        $order->load(['user', 'items.product']); // Eager load necessary data
+        $order->load(['user', 'items.product']);
 
         return view('admin.orders.packing-slip', compact('order'));
     }

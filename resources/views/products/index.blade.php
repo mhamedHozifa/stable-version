@@ -30,6 +30,11 @@
                             </a>
                         </h2>
                         <p class="price">${{ number_format($product->price, 2) }}</p>
+                        <form action="{{ route('cart.add', $product) }}" method="POST" class="add-to-cart-form">
+                            @csrf
+                            <input type="number" name="quantity" value="1" min="1" style="width: 60px;">
+                            <button type="submit">Add to Cart</button>
+                        </form>
                     </div>
                 </article>
             @endforeach

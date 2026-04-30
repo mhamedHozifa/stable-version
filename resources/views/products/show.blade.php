@@ -19,11 +19,14 @@
             <p class="price">${{ number_format($product->price, 2) }}</p>
             <p class="description">{{ $product->description ?: 'No description available yet.' }}</p>
 
-            <div class="quantity-row">
-                <label for="qty">Qty</label>
-                <input id="qty" type="number" min="1" value="1">
-                <button type="button">Add to Cart</button>
-            </div>
+            <form action="{{ route('cart.add', $product) }}" method="POST" class="add-to-cart-form">
+                @csrf
+                <div class="quantity-row">
+                    <label for="qty">Qty</label>
+                    <input id="qty" name="quantity" type="number" min="1" value="1">
+                    <button type="submit">Add to Cart</button>
+                </div>
+            </form>
 
             <a href="{{ route('shop.products.index') }}" class="back-link">Back to products</a>
         </div>
