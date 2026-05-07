@@ -46,47 +46,66 @@
 
                     <hr>
 
-                    <form method="POST" action="{{ route('cart.process-checkout') }}">
+                    <form method="POST" action="{{ route('checkout.process') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label for="shipping_address">Shipping Address</label>
-                            <textarea name="shipping_address" id="shipping_address" class="form-control" rows="3" required>{{ old('shipping_address') }}</textarea>
-                            @error('shipping_address')
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required value="{{ old('email') }}">
+                            @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="billing_address">Billing Address (Optional)</label>
-                            <textarea name="billing_address" id="billing_address" class="form-control" rows="3">{{ old('billing_address') }}</textarea>
-                            @error('billing_address')
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}">
+                            @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="payment_method">Payment Method</label>
-                            <select name="payment_method" id="payment_method" class="form-control" required>
-                                <option value="">Select Payment Method</option>
-                                <option value="credit_card" {{ old('payment_method') == 'credit_card' ? 'selected' : '' }}>Credit Card</option>
-                                <option value="paypal" {{ old('payment_method') == 'paypal' ? 'selected' : '' }}>PayPal</option>
-                                <option value="bank_transfer" {{ old('payment_method') == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
-                            </select>
-                            @error('payment_method')
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" class="form-control" required value="{{ old('address') }}">
+                            @error('address')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="notes">Notes (Optional)</label>
-                            <textarea name="notes" id="notes" class="form-control" rows="2">{{ old('notes') }}</textarea>
-                            @error('notes')
+                            <label for="city">City</label>
+                            <input type="text" name="city" id="city" class="form-control" required value="{{ old('city') }}">
+                            @error('city')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" name="state" id="state" class="form-control" required value="{{ old('state') }}">
+                            @error('state')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zip">Zip</label>
+                            <input type="text" name="zip" id="zip" class="form-control" required value="{{ old('zip') }}">
+                            @error('zip')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" name="country" id="country" class="form-control" required value="{{ old('country') }}" maxlength="2">
+                            @error('country')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">ادفع الآن</button>
                     </form>
                 </div>
             </div>

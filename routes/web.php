@@ -9,6 +9,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AdminLoginController::class, 'create'])
@@ -109,4 +110,7 @@ Route::delete('/cart/remove/{product}', [CartController::class, 'remove'])->name
 Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/cart/checkout', [CartController::class, 'processCheckout'])->name('cart.process-checkout');
+Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
