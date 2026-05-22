@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -28,6 +29,8 @@ class CategoryController extends Controller
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
+        // set the category site_type to the global site type (admin should not choose per-category)
+        $validated['site_type'] = Setting::get('site_type', 'clothing');
 
         Category::create($validated);
 
@@ -47,6 +50,8 @@ class CategoryController extends Controller
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
+        // ensure site_type matches global setting
+        $validated['site_type'] = Setting::get('site_type', 'clothing');
 
         $category->update($validated);
 

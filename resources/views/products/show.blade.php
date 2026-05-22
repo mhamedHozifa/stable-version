@@ -19,6 +19,20 @@
             <p class="price">${{ number_format($product->price, 2) }}</p>
             <p class="description">{{ $product->description ?: 'No description available yet.' }}</p>
 
+            @if(!empty($product->attributes) && is_array($product->attributes))
+                <section class="product-attributes">
+                    <h3>Specifications</h3>
+                    <dl>
+                        @foreach($product->attributes as $key => $value)
+                            @if($value)
+                                <dt>{{ ucfirst(str_replace('_', ' ', $key)) }}</dt>
+                                <dd>{{ $value }}</dd>
+                            @endif
+                        @endforeach
+                    </dl>
+                </section>
+            @endif
+
             <form action="{{ route('cart.add', $product) }}" method="POST" class="add-to-cart-form">
                 @csrf
                 <div class="quantity-row">

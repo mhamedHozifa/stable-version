@@ -20,6 +20,7 @@ public function up()
         $table->integer('stock')->default(0); // الكمية في المخزون
        // $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null'); // ربط مع التصنيفات (سننشئها لاحقاً)
         $table->string('image')->nullable(); // مسار الصورة
+        $table->json('attributes')->nullable(); // flexible product attributes per site type
         $table->timestamps(); // created_at و updated_at
     });
 }
