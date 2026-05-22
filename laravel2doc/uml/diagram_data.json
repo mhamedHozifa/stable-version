@@ -1,0 +1,593 @@
+{
+  "models": [
+    {
+      "name": "Category",
+      "properties": [
+        {
+          "name": "name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "slug",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "description",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "site_type",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "Order",
+      "properties": [
+        {
+          "name": "user_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "order_number",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "status",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "total",
+          "type": "fillable",
+          "dataType": "decimal:2"
+        },
+        {
+          "name": "shipping_address",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "billing_address",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "payment_method",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "payment_status",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "notes",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "OrderItem",
+      "properties": [
+        {
+          "name": "order_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "product_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "product_name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "price",
+          "type": "fillable",
+          "dataType": "decimal:2"
+        },
+        {
+          "name": "quantity",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "total",
+          "type": "fillable",
+          "dataType": "decimal:2"
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "Product",
+      "properties": [
+        {
+          "name": "name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "description",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "price",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "stock",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "category_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "image",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "is_featured",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "attributes",
+          "type": "fillable",
+          "dataType": "array"
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "Refund",
+      "properties": [
+        {
+          "name": "order_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "amount",
+          "type": "fillable",
+          "dataType": "decimal:2"
+        },
+        {
+          "name": "reason",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "status",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "processed_at",
+          "type": "fillable",
+          "dataType": "datetime"
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "Setting",
+      "properties": [
+        {
+          "name": "key",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "value",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "User",
+      "properties": [
+        {
+          "name": "name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "email",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "password",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "role",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [
+        {
+          "name": "isAdmin",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Models"
+    }
+  ],
+  "controllers": [
+    {
+      "name": "AdminLoginController",
+      "methods": [
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "logout",
+          "params": "Request $request"
+        },
+        {
+          "name": "createWelcome",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\Admin"
+    },
+    {
+      "name": "CategoryController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "edit",
+          "params": "Category $category"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, Category $category"
+        },
+        {
+          "name": "destroy",
+          "params": "Category $category"
+        },
+        {
+          "name": "editData",
+          "params": "Category $category"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\Admin"
+    },
+    {
+      "name": "OrderController",
+      "methods": [
+        {
+          "name": "index",
+          "params": "Request $request"
+        },
+        {
+          "name": "show",
+          "params": "Order $order"
+        },
+        {
+          "name": "updateStatus",
+          "params": "Request $request, Order $order"
+        },
+        {
+          "name": "refund",
+          "params": "Request $request, Order $order"
+        },
+        {
+          "name": "packingSlip",
+          "params": "Order $order"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\Admin"
+    },
+    {
+      "name": "ProductController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "show",
+          "params": "string $id"
+        },
+        {
+          "name": "edit",
+          "params": "string $id"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, Product $product"
+        },
+        {
+          "name": "destroy",
+          "params": "Product $product"
+        },
+        {
+          "name": "editData",
+          "params": "Product $product"
+        },
+        {
+          "name": "publicIndex",
+          "params": ""
+        },
+        {
+          "name": "publicShow",
+          "params": "Product $product"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\Admin"
+    },
+    {
+      "name": "SettingsController",
+      "methods": [
+        {
+          "name": "edit",
+          "params": ""
+        },
+        {
+          "name": "update",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\Admin"
+    },
+    {
+      "name": "CartController",
+      "methods": [
+        {
+          "name": "__construct",
+          "params": "Cart $cart"
+        },
+        {
+          "name": "add",
+          "params": "Request $request, Product $product"
+        },
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "update",
+          "params": "Request $request, Product $product"
+        },
+        {
+          "name": "remove",
+          "params": "Product $product"
+        },
+        {
+          "name": "clear",
+          "params": ""
+        },
+        {
+          "name": "checkout",
+          "params": ""
+        },
+        {
+          "name": "processCheckout",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "CheckoutController",
+      "methods": [
+        {
+          "name": "__construct",
+          "params": "Cart $cart"
+        },
+        {
+          "name": "processCheckout",
+          "params": "Request $request"
+        },
+        {
+          "name": "success",
+          "params": "Request $request"
+        },
+        {
+          "name": "cancel",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "Controller",
+      "methods": [],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "AuthController",
+      "methods": [
+        {
+          "name": "showRegisterForm",
+          "params": ""
+        },
+        {
+          "name": "register",
+          "params": "Request $request"
+        },
+        {
+          "name": "showLoginForm",
+          "params": ""
+        },
+        {
+          "name": "login",
+          "params": "Request $request"
+        },
+        {
+          "name": "logout",
+          "params": "Request $request"
+        },
+        {
+          "name": "showForgotForm",
+          "params": ""
+        },
+        {
+          "name": "sendResetLink",
+          "params": "Request $request"
+        },
+        {
+          "name": "showResetForm",
+          "params": "$token"
+        },
+        {
+          "name": "reset",
+          "params": "Request $request"
+        },
+        {
+          "name": "showLogoutForm",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\User"
+    },
+    {
+      "name": "ProfileController",
+      "methods": [
+        {
+          "name": "edit",
+          "params": ""
+        },
+        {
+          "name": "update",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers\\User"
+    }
+  ],
+  "services": [],
+  "relationships": [
+    {
+      "sourceModel": "Category",
+      "relationshipType": "hasMany",
+      "relationshipName": "products",
+      "targetModel": "Product::class"
+    },
+    {
+      "sourceModel": "Order",
+      "relationshipType": "hasMany",
+      "relationshipName": "items",
+      "targetModel": "OrderItem::class"
+    },
+    {
+      "sourceModel": "Order",
+      "relationshipType": "hasMany",
+      "relationshipName": "refunds",
+      "targetModel": "Refund::class"
+    },
+    {
+      "sourceModel": "Order",
+      "relationshipType": "belongsTo",
+      "relationshipName": "user",
+      "targetModel": "User::class"
+    },
+    {
+      "sourceModel": "OrderItem",
+      "relationshipType": "belongsTo",
+      "relationshipName": "order",
+      "targetModel": "Order::class"
+    },
+    {
+      "sourceModel": "OrderItem",
+      "relationshipType": "belongsTo",
+      "relationshipName": "product",
+      "targetModel": "Product::class"
+    },
+    {
+      "sourceModel": "Product",
+      "relationshipType": "belongsTo",
+      "relationshipName": "category",
+      "targetModel": "Category::class"
+    },
+    {
+      "sourceModel": "Refund",
+      "relationshipType": "belongsTo",
+      "relationshipName": "order",
+      "targetModel": "Order::class"
+    }
+  ],
+  "directories": {
+    ".": {
+      "models": [
+        "Category",
+        "Order",
+        "OrderItem",
+        "Product",
+        "Refund",
+        "Setting",
+        "User"
+      ],
+      "controllers": [
+        "AdminLoginController",
+        "CategoryController",
+        "OrderController",
+        "ProductController",
+        "SettingsController",
+        "CartController",
+        "CheckoutController",
+        "Controller",
+        "AuthController",
+        "ProfileController"
+      ]
+    }
+  }
+}

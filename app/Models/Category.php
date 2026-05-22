@@ -9,7 +9,8 @@ class Category extends Model
         protected $fillable = [
         'name',
         'slug',
-        'description'
+        'description',
+        'site_type',
     ];
 
     // علاقة مع المنتجات: تصنيف واحد يمتلك عدة منتجات

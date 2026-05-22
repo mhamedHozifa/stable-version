@@ -6,6 +6,9 @@
     <section class="page-head">
         <h1>Our Products</h1>
         <p>Browse what is currently available in our catalog.</p>
+        @isset($category)
+            <p>Showing products in category: <strong>{{ $category->name }}</strong></p>
+        @endisset
     </section>
 
     {{-- Future sprint: filtering/sorting/search controls --}}
