@@ -16,7 +16,15 @@ class Product extends Model
         'stock',
         'category_id',
         'image',
-        'is_featured'
+        'is_featured',
+        'attributes',
+    ];
+    
+    /**
+     * Cast JSON attributes to array automatically.
+     */
+    protected $casts = [
+        'attributes' => 'array',
     ];
     public function category()
     {
@@ -25,6 +33,6 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset('storage/' . $this->image) : asset('images/no-image.svg');
+        return $this->image ? asset($this->image) : asset('images/no-image.svg');
     }
 }

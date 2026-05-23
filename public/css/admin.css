@@ -394,3 +394,1253 @@ body {
         font-size: 22px;
     }
 }
+/* ========================================
+   ORDERS MODULE - PREMIUM ADMIN CSS
+   Modern, Clean, SaaS-style Dashboard
+   ======================================== */
+
+/* CSS Variables for Orders Module */
+:root {
+    --orders-primary-color: #2563eb;
+    --orders-primary-light: #3b82f6;
+    --orders-primary-dark: #1d4ed8;
+    --orders-secondary-color: #64748b;
+    --orders-success-color: #10b981;
+    --orders-warning-color: #f59e0b;
+    --orders-danger-color: #ef4444;
+    --orders-info-color: #0ea5e9;
+    --orders-dark-color: #1f2937;
+    
+    --orders-bg-light: #f8fafc;
+    --orders-bg-white: #ffffff;
+    --orders-bg-gray: #f4f7fb;
+    
+    --orders-text-primary: #1e293b;
+    --orders-text-secondary: #64748b;
+    --orders-text-muted: #94a3b8;
+    
+    --orders-border-color: #e2e8f0;
+    --orders-border-light: #f1f5f9;
+    --orders-border-radius: 12px;
+    
+    --orders-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --orders-shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
+    --orders-shadow-md: 0 10px 30px rgba(15, 23, 42, 0.1);
+    --orders-shadow-lg: 0 20px 50px rgba(15, 23, 42, 0.15);
+    
+    --orders-spacing-xs: 4px;
+    --orders-spacing-sm: 8px;
+    --orders-spacing-md: 16px;
+    --orders-spacing-lg: 24px;
+    --orders-spacing-xl: 32px;
+}
+
+/* ========================================
+   ORDERS LIST PAGE (Index)
+   ======================================== */
+
+/* Page Header */
+.container-fluid h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--orders-text-primary);
+    margin-bottom: 24px !important;
+    letter-spacing: -0.01em;
+}
+
+/* Filter Section Card Container */
+.container-fluid .card:first-of-type {
+    border: 1px solid var(--orders-border-color);
+    border-radius: var(--orders-border-radius);
+    box-shadow: var(--orders-shadow-sm);
+    background: var(--orders-bg-white);
+    overflow: hidden;
+}
+
+.container-fluid .card-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--orders-border-color);
+    padding: 18px 24px !important;
+}
+
+.container-fluid .card-header h6 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--orders-text-primary);
+    margin: 0 !important;
+    letter-spacing: -0.01em;
+}
+
+.container-fluid .card-body {
+    padding: 24px !important;
+}
+
+/* Filter Form Row */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    align-items: flex-end;
+}
+
+/* Filter Labels */
+.form-row label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--orders-text-primary);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+}
+
+/* Filter Input Fields */
+.form-row .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--orders-border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: var(--orders-bg-white);
+    color: var(--orders-text-primary);
+    transition: all 0.2s ease;
+}
+
+.form-row .form-control:focus {
+    border-color: var(--orders-primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.form-row .form-control::placeholder {
+    color: var(--orders-text-muted);
+}
+
+/* Filter Button */
+.form-row .btn-primary {
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, var(--orders-primary-color), var(--orders-primary-light));
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-row .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.form-row .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   ORDERS TABLE
+   ======================================== */
+
+.table-responsive {
+    border-radius: var(--orders-border-radius);
+    overflow: hidden;
+}
+
+.table {
+    margin: 0 !important;
+}
+
+.table th {
+    background: #f0f4f8;
+    color: var(--orders-text-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px 16px !important;
+    border-bottom: 2px solid var(--orders-border-color);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px !important;
+    vertical-align: middle;
+    color: var(--orders-text-primary);
+    font-size: 0.9rem;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--orders-border-light);
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.02);
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Order Number Cell */
+.table td:first-child {
+    font-weight: 600;
+    color: var(--orders-primary-color);
+}
+
+/* Customer Cell */
+.table td:nth-child(2) {
+    max-width: 280px;
+    word-break: break-word;
+}
+
+.table td:nth-child(2) {
+    color: var(--orders-text-primary);
+    font-size: 0.9rem;
+}
+
+/* Total Amount */
+.table td:nth-child(3) {
+    font-weight: 600;
+    color: var(--orders-success-color);
+    font-size: 0.95rem;
+}
+
+/* Status Badge Container */
+.table td:nth-child(4),
+.table td:nth-child(5) {
+    text-align: center;
+}
+
+/* Empty State */
+.table tbody tr td[colspan] {
+    text-align: center;
+    padding: 40px 16px !important;
+    color: var(--orders-text-secondary);
+    font-style: italic;
+}
+
+/* ========================================
+   STATUS BADGES - PREMIUM STYLING
+   ======================================== */
+
+/* Base Badge Styles */
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+/* Pending Badge */
+.badge.bg-warning {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+    color: #92400e !important;
+    border: 1px solid #fcd34d;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+}
+
+.badge.bg-warning:hover {
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Processing Badge */
+.badge.bg-info {
+    background: linear-gradient(135deg, #cffafe, #a5f3fc) !important;
+    color: #0c4a6e !important;
+    border: 1px solid #22d3ee;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.15);
+}
+
+.badge.bg-info:hover {
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Primary Badge (Shipped) */
+.badge.bg-primary {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe) !important;
+    color: #0c2d6b !important;
+    border: 1px solid #60a5fa;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.badge.bg-primary:hover {
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Success Badge (Delivered) */
+.badge.bg-success {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important;
+    color: #065f46 !important;
+    border: 1px solid #6ee7b7;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+}
+
+.badge.bg-success:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Danger Badge (Cancelled) */
+.badge.bg-danger {
+    background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+    color: #7f1d1d !important;
+    border: 1px solid #fca5a5;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+}
+
+.badge.bg-danger:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Dark Badge (Refunded) */
+.badge.bg-dark {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb) !important;
+    color: #1f2937 !important;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 8px rgba(31, 41, 55, 0.15);
+}
+
+.badge.bg-dark:hover {
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Secondary Badge */
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0) !important;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 8px rgba(100, 116, 139, 0.1);
+}
+
+.badge.bg-secondary:hover {
+    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.15);
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   ACTION BUTTONS IN TABLE
+   ======================================== */
+
+.table .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.table .btn-info {
+    background: linear-gradient(135deg, var(--orders-primary-color), var(--orders-primary-light));
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.table .btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.table .btn-info:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+
+.d-flex.justify-content-center {
+    margin-top: 28px !important;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid var(--orders-border-color);
+    border-radius: 6px;
+    background: var(--orders-bg-white);
+    color: var(--orders-primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+    background: var(--orders-primary-color);
+    color: #fff;
+    border-color: var(--orders-primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.pagination .active span,
+.pagination .page-item.active .page-link {
+    background: var(--orders-primary-color);
+    color: #fff;
+    border-color: var(--orders-primary-color);
+}
+
+.pagination span.disabled {
+    color: var(--orders-text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ========================================
+   ORDER DETAILS PAGE (Show)
+   ======================================== */
+
+/* Header with Back Button */
+.d-sm-flex.align-items-center.justify-content-between {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 28px !important;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.d-sm-flex h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orders-text-primary);
+    margin: 0 !important;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Back to Orders Button */
+.d-none.d-sm-inline-block.btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px !important;
+    font-weight: 600;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--orders-secondary-color), #475569) !important;
+    color: #fff !important;
+    text-decoration: none;
+    box-shadow: var(--orders-shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.d-none.d-sm-inline-block.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--orders-shadow-md);
+    text-decoration: none;
+    color: #fff;
+}
+
+.d-none.d-sm-inline-block.btn i {
+    display: inline-block;
+}
+
+/* Details Row Layout */
+.row {
+    display: grid !important;
+    gap: 24px;
+    margin-bottom: 0 !important;
+}
+
+.row .col-lg-8 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.row .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Order Information Card */
+.card {
+    border: 1px solid var(--orders-border-color);
+    border-radius: var(--orders-border-radius);
+    box-shadow: var(--orders-shadow-sm);
+    background: var(--orders-bg-white);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--orders-shadow-md);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--orders-border-color);
+    padding: 18px 24px !important;
+}
+
+.card-header h6 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--orders-text-primary);
+    margin: 0 !important;
+    letter-spacing: -0.01em;
+}
+
+.card-body {
+    padding: 24px !important;
+}
+
+/* Order Info Details */
+.card-body p {
+    margin-bottom: 14px;
+    color: var(--orders-text-primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.card-body p:last-child {
+    margin-bottom: 0;
+}
+
+.card-body strong {
+    font-weight: 700;
+    color: var(--orders-text-primary);
+}
+
+.card-body a {
+    color: var(--orders-primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.card-body a:hover {
+    color: var(--orders-primary-dark);
+    text-decoration: underline;
+}
+
+/* ========================================
+   ORDER ITEMS TABLE
+   ======================================== */
+
+.card .table {
+    margin: 0 !important;
+}
+
+.card .table th {
+    background: #f0f4f8;
+    color: var(--orders-text-primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 16px !important;
+}
+
+.card .table td {
+    padding: 14px 16px !important;
+    border-bottom: 1px solid var(--orders-border-light);
+}
+
+.card .table tbody tr:hover {
+    background: rgba(37, 99, 235, 0.02);
+}
+
+.card .table tfoot tr {
+    background: #f8fafc;
+    border-top: 2px solid var(--orders-border-color);
+    font-weight: 600;
+}
+
+.card .table tfoot th {
+    background: #f8fafc;
+    padding: 12px 16px !important;
+    text-align: right;
+    color: var(--orders-text-primary);
+    border: none;
+}
+
+.card .table tfoot td {
+    text-align: right;
+    font-weight: 600;
+    color: var(--orders-text-primary);
+}
+
+/* Product Links in Table */
+.card .table a {
+    color: var(--orders-primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.card .table a:hover {
+    color: var(--orders-primary-dark);
+    text-decoration: underline;
+}
+
+/* ========================================
+   ACTIONS SIDEBAR
+   ======================================== */
+
+/* Actions Card */
+.col-lg-4 .card-header h6 {
+    color: var(--orders-primary-color);
+}
+
+.col-lg-4 .card-body h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--orders-text-primary);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+}
+
+.col-lg-4 hr {
+    border: none;
+    border-top: 1px solid var(--orders-border-color);
+    margin: 20px 0;
+}
+
+/* ========================================
+   FORMS IN DETAILS PAGE
+   ======================================== */
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--orders-text-primary);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--orders-border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: var(--orders-bg-white);
+    color: var(--orders-text-primary);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group .form-control:focus {
+    border-color: var(--orders-primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.form-group .form-control::placeholder {
+    color: var(--orders-text-muted);
+}
+
+.form-group .form-control:disabled,
+.form-group .form-control[disabled] {
+    background: var(--orders-bg-light);
+    color: var(--orders-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Textarea Styling */
+.form-group textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Form Buttons */
+.form-group .btn-block,
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.form-group .btn-success,
+.btn-success {
+    background: linear-gradient(135deg, var(--orders-success-color), #059669);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.form-group .btn-success:hover,
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.form-group .btn-warning,
+.btn-warning {
+    background: linear-gradient(135deg, var(--orders-warning-color), #d97706);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+}
+
+.form-group .btn-warning:hover,
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.form-group .btn-warning:disabled,
+.btn-warning:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-group .btn-secondary,
+.btn-secondary {
+    background: linear-gradient(135deg, var(--orders-secondary-color), #475569);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(100, 116, 139, 0.2);
+}
+
+.form-group .btn-secondary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+}
+
+/* Error Messages */
+.invalid-feedback {
+    display: block;
+    color: var(--orders-danger-color);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.form-control.is-invalid {
+    border-color: var(--orders-danger-color);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ========================================
+   REFUNDS SECTION
+   ======================================== */
+
+.col-lg-8 .card:nth-child(3) {
+    margin-top: 0;
+}
+
+.col-lg-8 .card:nth-child(3) .card-header h6 {
+    color: var(--orders-info-color);
+}
+
+/* ========================================
+   PACKING SLIP - PRINT VIEW
+   ======================================== */
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        color: #000;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 20mm;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 15px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: -0.02em;
+    }
+
+    .header p {
+        margin: 6px 0;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    .details,
+    .items {
+        margin-bottom: 30px;
+    }
+
+    .details h2,
+    .items h2 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 8px;
+        color: #000;
+    }
+
+    .details p {
+        margin: 6px 0;
+        font-size: 0.95rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        border: 1px solid #000;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+        font-size: 0.9rem;
+        color: #000;
+    }
+
+    table th {
+        background: #f5f5f5;
+        font-weight: 700;
+        border: 1px solid #000;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        border-top: 2px solid #000;
+        padding-top: 15px;
+        font-size: 0.85rem;
+        color: #666;
+    }
+
+    .footer p {
+        margin: 6px 0;
+    }
+}
+
+/* Print Media - Screen Preview */
+@page {
+    margin: 20mm;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .row .col-lg-8,
+    .row .col-lg-4 {
+        max-width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid h1 {
+        font-size: 1.5rem;
+        margin-bottom: 18px !important;
+    }
+
+    .d-sm-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .d-sm-flex h1 {
+        width: 100%;
+        margin-bottom: 12px !important;
+    }
+
+    .d-none.d-sm-inline-block.btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .form-row .col-md-3,
+    .form-row .col-md-2 {
+        max-width: 100%;
+    }
+
+    .form-row .col-md-2.mb-3.align-self-end {
+        align-self: flex-end !important;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px 8px !important;
+    }
+
+    .table th {
+        font-size: 0.75rem;
+    }
+
+    .table .btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .badge {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .card-header {
+        padding: 14px 16px !important;
+    }
+
+    .card-body {
+        padding: 16px !important;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+    .col-lg-4 .card-body h5 {
+        font-size: 0.95rem;
+    }
+
+    .form-group .btn-block {
+        padding: 9px 12px;
+    }
+
+    .pagination {
+        gap: 4px;
+    }
+
+    .pagination a,
+    .pagination span {
+        min-width: 32px;
+        height: 32px;
+        padding: 0 6px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-fluid h1 {
+        font-size: 1.25rem;
+        margin-bottom: 14px !important;
+    }
+
+    .container-fluid .card {
+        border-radius: 10px;
+    }
+
+    .container-fluid .card-header {
+        padding: 12px 14px !important;
+    }
+
+    .container-fluid .card-header h6 {
+        font-size: 1rem;
+    }
+
+    .container-fluid .card-body {
+        padding: 14px !important;
+    }
+
+    .form-row {
+        gap: 10px;
+    }
+
+    .form-row label {
+        font-size: 0.8rem;
+    }
+
+    .form-row .form-control {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .form-row .btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .table {
+        font-size: 0.8rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px 6px !important;
+    }
+
+    .table th {
+        font-size: 0.7rem;
+    }
+
+    .table .btn {
+        padding: 5px 8px;
+        font-size: 0.7rem;
+        gap: 4px;
+    }
+
+    .badge {
+        padding: 4px 8px;
+        font-size: 0.65rem;
+    }
+
+    .card-body p {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .pagination a,
+    .pagination span {
+        min-width: 28px;
+        height: 28px;
+        padding: 0 4px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ========================================
+   DARK MODE SUPPORT (Optional)
+   ======================================== */
+
+
+
+    .container-fluid .card {
+        background: var(--orders-bg-white);
+    }
+
+    .container-fluid .card-header {
+        background: linear-gradient(135deg, #cdd3dd 0%, #1a202c 100%);
+    }
+
+    .form-row .form-control {
+        background: var(--orders-bg-white);
+        color: var(--orders-text-primary);
+        border-color: var(--orders-border-color);
+    }
+
+    .table {
+        background: var(--orders-bg-white);
+    }
+
+    .table th {
+        background: var(--orders-bg-light);
+        color: var(--orders-text-primary);
+    }
+
+    .table tbody tr:hover {
+        background: rgba(37, 99, 235, 0.08);
+    }
+
+    .card {
+        background: var(--orders-bg-white);
+    }
+
+    .badge.bg-warning {
+        background: linear-gradient(135deg, #78350f, #a16207) !important;
+        color: #fef3c7 !important;
+    }
+
+    .badge.bg-info {
+        background: linear-gradient(135deg, #0c4a6e, #0e7490) !important;
+        color: #cffafe !important;
+    }
+
+    .badge.bg-primary {
+        background: linear-gradient(135deg, #0c2d6b, #1e40af) !important;
+        color: #dbeafe !important;
+    }
+
+    .badge.bg-success {
+        background: linear-gradient(135deg, #064e3b, #047857) !important;
+        color: #d1fae5 !important;
+    }
+
+    .badge.bg-danger {
+        background: linear-gradient(135deg, #7f1d1d, #991b1b) !important;
+        color: #fee2e2 !important;
+    }
+
+    .badge.bg-dark {
+        background: linear-gradient(135deg, #4b5563, #6b7280) !important;
+        color: #f3f4f6 !important;
+    }
+
+    .badge.bg-secondary {
+        background: linear-gradient(135deg, #475569, #64748b) !important;
+        color: #f1f5f9 !important;
+    }
+
+
+/* ========================================
+   ANIMATION & TRANSITIONS
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.table tbody tr {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.btn:focus-visible,
+.form-control:focus-visible {
+    outline: 2px solid var(--orders-primary-color);
+    outline-offset: 2px;
+}
+
+.badge:focus-visible {
+    outline: 2px solid var(--orders-text-primary);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--orders-primary-color);
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ========================================
+   END OF ORDERS MODULE CSS
+   ======================================== */
+   /* --- Quick fixes for Orders buttons --- */
+
+/* 1) View button text should stay white */
+/* View button text stays white */
+.table .btn-info,
+.table .btn-info:hover,
+.table .btn-info:focus {
+    color: #ffffff !important;
+}
+
+/* Process Refund button = green */
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:focus {
+    background: linear-gradient(135deg, #16a34a, #15803d) !important;
+    color: #ffffff !important;
+    border-color: #16a34a !important;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.20) !important;
+}
+
+/* Print Packing Slip button = green */
+.btn-secondary.btn-block,
+.btn-secondary.btn-block:hover,
+.btn-secondary.btn-block:focus {
+    background: linear-gradient(135deg, #16a34a, #15803d) !important;
+    color: #ffffff !important;
+    border-color: #16a34a !important;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.20) !important;
+}
+/* Premium darker hover for green buttons */
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-secondary.btn-block:hover,
+.btn-secondary.btn-block:focus {
+    background: linear-gradient(135deg, #15803d, #166534) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(21, 128, 61, 0.28) !important;
+}

@@ -31,7 +31,7 @@
                     <td>{{ $product->is_featured ? 'Yes' : 'No' }}</td>
                     <td>
                         @if($product->image)
-                            <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" width="50">
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="50">
                         @else
                             <img src="https://via.placeholder.com/50" alt="placeholder">
                         @endif
@@ -94,6 +94,31 @@
                     <input type="number" name="stock" id="stock" min="0" value="0" class="form-control">
                 </div>
 
+                <!-- Attribute fields: shown based on global site type -->
+                <div id="attributesContainer">
+                    <div id="clothingFields" style="display:none;">
+                        <div class="form-group">
+                            <label for="attributes_size">Size</label>
+                            <input type="text" name="attributes[size]" id="attributes_size" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="attributes_color">Color</label>
+                            <input type="text" name="attributes[color]" id="attributes_color" class="form-control">
+                        </div>
+                    </div>
+
+                    <div id="electronicsFields" style="display:none;">
+                        <div class="form-group">
+                            <label for="attributes_processor">Processor</label>
+                            <input type="text" name="attributes[processor]" id="attributes_processor" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="attributes_ram">RAM</label>
+                            <input type="text" name="attributes[ram]" id="attributes_ram" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image" accept="image/*" class="form-control-file">
@@ -131,6 +156,30 @@
 
     @push('scripts')
     <script>
+        // Pass global siteType from server-side into JS
+        const siteType = "{{ $siteType ?? 'clothing' }}";
+
+        function toggleAttributeFields() {
+            const clothing = document.getElementById('clothingFields');
+            const electronics = document.getElementById('electronicsFields');
+            if (!clothing || !electronics) return;
+            if (siteType === 'clothing') {
+                clothing.style.display = 'block';
+                electronics.style.display = 'none';
+            } else {
+                clothing.style.display = 'none';
+                electronics.style.display = 'block';
+            }
+        }
+
+        function clearAttributeInputs() {
+            const ids = ['attributes_size','attributes_color','attributes_processor','attributes_ram'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+        }
+
         function openModal(action, productId = null) {
             const modal = document.getElementById('productModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -143,14 +192,15 @@
                 form.action = "{{ route('products.store') }}";
                 methodField.value = 'POST';
                 productIdField.value = '';
-                // تفريغ جميع الحقول
                 document.getElementById('name').value = '';
                 document.getElementById('description').value = '';
                 document.getElementById('price').value = '';
                 document.getElementById('stock').value = 0;
-                document.getElementById('category_id').value = '';   // إضافة تفريغ التصنيف
+                document.getElementById('category_id').value = '';
                 document.getElementById('is_featured').checked = false;
                 document.getElementById('imagePreview').innerHTML = '';
+                clearAttributeInputs();
+                toggleAttributeFields();
             } else if (action === 'edit' && productId) {
                 modalTitle.innerText = 'Edit Product';
                 form.action = `/admin/products/${productId}`;
@@ -165,13 +215,22 @@
                         document.getElementById('description').value = data.description;
                         document.getElementById('price').value = data.price;
                         document.getElementById('stock').value = data.stock;
-                        document.getElementById('category_id').value = data.category_id;  // تعيين التصنيف (بدون سطر فارغ)
+                        document.getElementById('category_id').value = data.category_id;
                         document.getElementById('is_featured').checked = data.is_featured == 1;
                         if (data.image) {
-                            document.getElementById('imagePreview').innerHTML = `<img src="/storage/${data.image}" width="100">`;
+                            document.getElementById('imagePreview').innerHTML = `<img src="/${data.image}" width="100">`;
                         } else {
                             document.getElementById('imagePreview').innerHTML = '';
                         }
+
+                        // populate attribute inputs if present
+                        const attrs = data.attributes || {};
+                        if (document.getElementById('attributes_size')) document.getElementById('attributes_size').value = attrs.size || '';
+                        if (document.getElementById('attributes_color')) document.getElementById('attributes_color').value = attrs.color || '';
+                        if (document.getElementById('attributes_processor')) document.getElementById('attributes_processor').value = attrs.processor || '';
+                        if (document.getElementById('attributes_ram')) document.getElementById('attributes_ram').value = attrs.ram || '';
+
+                        toggleAttributeFields();
                     })
                     .catch(error => console.error('Error:', error));
             }
@@ -191,19 +250,19 @@
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = `/admin/products/${productId}`;
-                
+
                 const csrfInput = document.createElement('input');
                 csrfInput.type = 'hidden';
                 csrfInput.name = '_token';
                 csrfInput.value = '{{ csrf_token() }}';
                 form.appendChild(csrfInput);
-                
+
                 const methodInput = document.createElement('input');
                 methodInput.type = 'hidden';
                 methodInput.name = '_method';
                 methodInput.value = 'DELETE';
                 form.appendChild(methodInput);
-                
+
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -219,6 +278,11 @@
                 deleteModal.style.display = 'none';
             }
         }
+
+        // initialize attribute visibility on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleAttributeFields();
+        });
     </script>
     @endpush
 @endsection

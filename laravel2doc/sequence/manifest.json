@@ -1,0 +1,613 @@
+{
+  "projectName": "laravel/laravel",
+  "projectVersion": "v12.53.0",
+  "generatedAt": "2026-05-19T16:20:18.410Z",
+  "diagrams": [
+    {
+      "id": "AdminLoginController-create",
+      "name": "AdminLoginController::create",
+      "controller": "AdminLogin",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in AdminLoginController",
+      "fileName": "AdminLoginController_create.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.293Z"
+    },
+    {
+      "id": "AdminLoginController-store",
+      "name": "AdminLoginController::store",
+      "controller": "AdminLogin",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in AdminLoginController",
+      "fileName": "AdminLoginController_store.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.295Z"
+    },
+    {
+      "id": "AdminLoginController-logout",
+      "name": "AdminLoginController::logout",
+      "controller": "AdminLogin",
+      "method": "logout",
+      "type": "generic",
+      "description": "Handles logout operation in AdminLoginController",
+      "fileName": "AdminLoginController_logout.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.295Z"
+    },
+    {
+      "id": "AdminLoginController-createWelcome",
+      "name": "AdminLoginController::createWelcome",
+      "controller": "AdminLogin",
+      "method": "createWelcome",
+      "type": "generic",
+      "description": "Handles createWelcome operation in AdminLoginController",
+      "fileName": "AdminLoginController_createWelcome.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.296Z"
+    },
+    {
+      "id": "CategoryController-index",
+      "name": "CategoryController::index",
+      "controller": "Category",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from CategoryController",
+      "fileName": "CategoryController_index.md",
+      "models": [
+        "Category"
+      ],
+      "timestamp": "2026-05-19T16:20:18.296Z"
+    },
+    {
+      "id": "CategoryController-create",
+      "name": "CategoryController::create",
+      "controller": "Category",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in CategoryController",
+      "fileName": "CategoryController_create.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.296Z"
+    },
+    {
+      "id": "CategoryController-store",
+      "name": "CategoryController::store",
+      "controller": "Category",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in CategoryController",
+      "fileName": "CategoryController_store.md",
+      "models": [
+        "Category",
+        "Setting"
+      ],
+      "timestamp": "2026-05-19T16:20:18.297Z"
+    },
+    {
+      "id": "CategoryController-edit",
+      "name": "CategoryController::edit",
+      "controller": "Category",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in CategoryController",
+      "fileName": "CategoryController_edit.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.297Z"
+    },
+    {
+      "id": "CategoryController-update",
+      "name": "CategoryController::update",
+      "controller": "Category",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in CategoryController",
+      "fileName": "CategoryController_update.md",
+      "models": [
+        "Category",
+        "Setting"
+      ],
+      "timestamp": "2026-05-19T16:20:18.298Z"
+    },
+    {
+      "id": "CategoryController-destroy",
+      "name": "CategoryController::destroy",
+      "controller": "Category",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from CategoryController",
+      "fileName": "CategoryController_destroy.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.298Z"
+    },
+    {
+      "id": "CategoryController-editData",
+      "name": "CategoryController::editData",
+      "controller": "Category",
+      "method": "editData",
+      "type": "generic",
+      "description": "Handles editData operation in CategoryController",
+      "fileName": "CategoryController_editData.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.299Z"
+    },
+    {
+      "id": "OrderController-index",
+      "name": "OrderController::index",
+      "controller": "Order",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from OrderController",
+      "fileName": "OrderController_index.md",
+      "models": [
+        "Order"
+      ],
+      "timestamp": "2026-05-19T16:20:18.299Z"
+    },
+    {
+      "id": "OrderController-show",
+      "name": "OrderController::show",
+      "controller": "Order",
+      "method": "show",
+      "type": "show",
+      "description": "Retrieves a specific resource from OrderController",
+      "fileName": "OrderController_show.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.300Z"
+    },
+    {
+      "id": "OrderController-updateStatus",
+      "name": "OrderController::updateStatus",
+      "controller": "Order",
+      "method": "updateStatus",
+      "type": "generic",
+      "description": "Handles updateStatus operation in OrderController",
+      "fileName": "OrderController_updateStatus.md",
+      "models": [
+        "Order"
+      ],
+      "timestamp": "2026-05-19T16:20:18.300Z"
+    },
+    {
+      "id": "OrderController-refund",
+      "name": "OrderController::refund",
+      "controller": "Order",
+      "method": "refund",
+      "type": "generic",
+      "description": "Handles refund operation in OrderController",
+      "fileName": "OrderController_refund.md",
+      "models": [
+        "Refund"
+      ],
+      "timestamp": "2026-05-19T16:20:18.301Z"
+    },
+    {
+      "id": "OrderController-packingSlip",
+      "name": "OrderController::packingSlip",
+      "controller": "Order",
+      "method": "packingSlip",
+      "type": "generic",
+      "description": "Handles packingSlip operation in OrderController",
+      "fileName": "OrderController_packingSlip.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.301Z"
+    },
+    {
+      "id": "ProductController-index",
+      "name": "ProductController::index",
+      "controller": "Product",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from ProductController",
+      "fileName": "ProductController_index.md",
+      "models": [
+        "Category",
+        "Product"
+      ],
+      "timestamp": "2026-05-19T16:20:18.302Z"
+    },
+    {
+      "id": "ProductController-create",
+      "name": "ProductController::create",
+      "controller": "Product",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in ProductController",
+      "fileName": "ProductController_create.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.303Z"
+    },
+    {
+      "id": "ProductController-store",
+      "name": "ProductController::store",
+      "controller": "Product",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in ProductController",
+      "fileName": "ProductController_store.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.303Z"
+    },
+    {
+      "id": "ProductController-show",
+      "name": "ProductController::show",
+      "controller": "Product",
+      "method": "show",
+      "type": "show",
+      "description": "Retrieves a specific resource from ProductController",
+      "fileName": "ProductController_show.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.304Z"
+    },
+    {
+      "id": "ProductController-edit",
+      "name": "ProductController::edit",
+      "controller": "Product",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in ProductController",
+      "fileName": "ProductController_edit.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.304Z"
+    },
+    {
+      "id": "ProductController-update",
+      "name": "ProductController::update",
+      "controller": "Product",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in ProductController",
+      "fileName": "ProductController_update.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.305Z"
+    },
+    {
+      "id": "ProductController-destroy",
+      "name": "ProductController::destroy",
+      "controller": "Product",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from ProductController",
+      "fileName": "ProductController_destroy.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.305Z"
+    },
+    {
+      "id": "ProductController-editData",
+      "name": "ProductController::editData",
+      "controller": "Product",
+      "method": "editData",
+      "type": "generic",
+      "description": "Handles editData operation in ProductController",
+      "fileName": "ProductController_editData.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.306Z"
+    },
+    {
+      "id": "ProductController-publicIndex",
+      "name": "ProductController::publicIndex",
+      "controller": "Product",
+      "method": "publicIndex",
+      "type": "generic",
+      "description": "Handles publicIndex operation in ProductController",
+      "fileName": "ProductController_publicIndex.md",
+      "models": [
+        "Product"
+      ],
+      "timestamp": "2026-05-19T16:20:18.306Z"
+    },
+    {
+      "id": "ProductController-publicShow",
+      "name": "ProductController::publicShow",
+      "controller": "Product",
+      "method": "publicShow",
+      "type": "generic",
+      "description": "Handles publicShow operation in ProductController",
+      "fileName": "ProductController_publicShow.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.307Z"
+    },
+    {
+      "id": "SettingsController-edit",
+      "name": "SettingsController::edit",
+      "controller": "Settings",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in SettingsController",
+      "fileName": "SettingsController_edit.md",
+      "models": [
+        "Setting"
+      ],
+      "timestamp": "2026-05-19T16:20:18.308Z"
+    },
+    {
+      "id": "SettingsController-update",
+      "name": "SettingsController::update",
+      "controller": "Settings",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in SettingsController",
+      "fileName": "SettingsController_update.md",
+      "models": [
+        "Setting"
+      ],
+      "timestamp": "2026-05-19T16:20:18.308Z"
+    },
+    {
+      "id": "CartController-add",
+      "name": "CartController::add",
+      "controller": "Cart",
+      "method": "add",
+      "type": "create",
+      "description": "Creates a new resource in CartController",
+      "fileName": "CartController_add.md",
+      "models": [
+        "Product"
+      ],
+      "timestamp": "2026-05-19T16:20:18.309Z"
+    },
+    {
+      "id": "CartController-index",
+      "name": "CartController::index",
+      "controller": "Cart",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from CartController",
+      "fileName": "CartController_index.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.309Z"
+    },
+    {
+      "id": "CartController-update",
+      "name": "CartController::update",
+      "controller": "Cart",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in CartController",
+      "fileName": "CartController_update.md",
+      "models": [
+        "Product"
+      ],
+      "timestamp": "2026-05-19T16:20:18.310Z"
+    },
+    {
+      "id": "CartController-remove",
+      "name": "CartController::remove",
+      "controller": "Cart",
+      "method": "remove",
+      "type": "delete",
+      "description": "Removes a resource from CartController",
+      "fileName": "CartController_remove.md",
+      "models": [
+        "Product"
+      ],
+      "timestamp": "2026-05-19T16:20:18.311Z"
+    },
+    {
+      "id": "CartController-clear",
+      "name": "CartController::clear",
+      "controller": "Cart",
+      "method": "clear",
+      "type": "generic",
+      "description": "Handles clear operation in CartController",
+      "fileName": "CartController_clear.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.312Z"
+    },
+    {
+      "id": "CartController-checkout",
+      "name": "CartController::checkout",
+      "controller": "Cart",
+      "method": "checkout",
+      "type": "generic",
+      "description": "Handles checkout operation in CartController",
+      "fileName": "CartController_checkout.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.313Z"
+    },
+    {
+      "id": "CartController-processCheckout",
+      "name": "CartController::processCheckout",
+      "controller": "Cart",
+      "method": "processCheckout",
+      "type": "generic",
+      "description": "Handles processCheckout operation in CartController",
+      "fileName": "CartController_processCheckout.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.313Z"
+    },
+    {
+      "id": "CheckoutController-processCheckout",
+      "name": "CheckoutController::processCheckout",
+      "controller": "Checkout",
+      "method": "processCheckout",
+      "type": "generic",
+      "description": "Handles processCheckout operation in CheckoutController",
+      "fileName": "CheckoutController_processCheckout.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.314Z"
+    },
+    {
+      "id": "CheckoutController-success",
+      "name": "CheckoutController::success",
+      "controller": "Checkout",
+      "method": "success",
+      "type": "generic",
+      "description": "Handles success operation in CheckoutController",
+      "fileName": "CheckoutController_success.md",
+      "models": [
+        "Order"
+      ],
+      "timestamp": "2026-05-19T16:20:18.315Z"
+    },
+    {
+      "id": "CheckoutController-cancel",
+      "name": "CheckoutController::cancel",
+      "controller": "Checkout",
+      "method": "cancel",
+      "type": "generic",
+      "description": "Handles cancel operation in CheckoutController",
+      "fileName": "CheckoutController_cancel.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.316Z"
+    },
+    {
+      "id": "AuthController-showRegisterForm",
+      "name": "AuthController::showRegisterForm",
+      "controller": "Auth",
+      "method": "showRegisterForm",
+      "type": "generic",
+      "description": "Handles showRegisterForm operation in AuthController",
+      "fileName": "AuthController_showRegisterForm.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.317Z"
+    },
+    {
+      "id": "AuthController-register",
+      "name": "AuthController::register",
+      "controller": "Auth",
+      "method": "register",
+      "type": "generic",
+      "description": "Handles register operation in AuthController",
+      "fileName": "AuthController_register.md",
+      "models": [
+        "User"
+      ],
+      "timestamp": "2026-05-19T16:20:18.317Z"
+    },
+    {
+      "id": "AuthController-showLoginForm",
+      "name": "AuthController::showLoginForm",
+      "controller": "Auth",
+      "method": "showLoginForm",
+      "type": "generic",
+      "description": "Handles showLoginForm operation in AuthController",
+      "fileName": "AuthController_showLoginForm.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.318Z"
+    },
+    {
+      "id": "AuthController-login",
+      "name": "AuthController::login",
+      "controller": "Auth",
+      "method": "login",
+      "type": "generic",
+      "description": "Handles login operation in AuthController",
+      "fileName": "AuthController_login.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.318Z"
+    },
+    {
+      "id": "AuthController-logout",
+      "name": "AuthController::logout",
+      "controller": "Auth",
+      "method": "logout",
+      "type": "generic",
+      "description": "Handles logout operation in AuthController",
+      "fileName": "AuthController_logout.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.319Z"
+    },
+    {
+      "id": "AuthController-showForgotForm",
+      "name": "AuthController::showForgotForm",
+      "controller": "Auth",
+      "method": "showForgotForm",
+      "type": "generic",
+      "description": "Handles showForgotForm operation in AuthController",
+      "fileName": "AuthController_showForgotForm.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.319Z"
+    },
+    {
+      "id": "AuthController-sendResetLink",
+      "name": "AuthController::sendResetLink",
+      "controller": "Auth",
+      "method": "sendResetLink",
+      "type": "generic",
+      "description": "Handles sendResetLink operation in AuthController",
+      "fileName": "AuthController_sendResetLink.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.320Z"
+    },
+    {
+      "id": "AuthController-showResetForm",
+      "name": "AuthController::showResetForm",
+      "controller": "Auth",
+      "method": "showResetForm",
+      "type": "generic",
+      "description": "Handles showResetForm operation in AuthController",
+      "fileName": "AuthController_showResetForm.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.321Z"
+    },
+    {
+      "id": "AuthController-reset",
+      "name": "AuthController::reset",
+      "controller": "Auth",
+      "method": "reset",
+      "type": "generic",
+      "description": "Handles reset operation in AuthController",
+      "fileName": "AuthController_reset.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.321Z"
+    },
+    {
+      "id": "AuthController-showLogoutForm",
+      "name": "AuthController::showLogoutForm",
+      "controller": "Auth",
+      "method": "showLogoutForm",
+      "type": "generic",
+      "description": "Handles showLogoutForm operation in AuthController",
+      "fileName": "AuthController_showLogoutForm.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.322Z"
+    },
+    {
+      "id": "ProfileController-edit",
+      "name": "ProfileController::edit",
+      "controller": "Profile",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in ProfileController",
+      "fileName": "ProfileController_edit.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.322Z"
+    },
+    {
+      "id": "ProfileController-update",
+      "name": "ProfileController::update",
+      "controller": "Profile",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in ProfileController",
+      "fileName": "ProfileController_update.md",
+      "models": [],
+      "timestamp": "2026-05-19T16:20:18.323Z"
+    }
+  ],
+  "statistics": {
+    "totalDiagrams": 50,
+    "byType": {
+      "create": 7,
+      "generic": 25,
+      "list": 4,
+      "update": 9,
+      "delete": 3,
+      "show": 2
+    },
+    "byController": {
+      "AdminLogin": 4,
+      "Category": 7,
+      "Order": 5,
+      "Product": 10,
+      "Settings": 2,
+      "Cart": 7,
+      "Checkout": 3,
+      "": 0,
+      "Auth": 10,
+      "Profile": 2
+    }
+  }
+}

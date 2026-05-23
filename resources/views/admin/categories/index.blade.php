@@ -57,6 +57,7 @@
                 <label for="description">Description (optional)</label>
                 <textarea name="description" id="description" rows="3" class="form-control"></textarea>
             </div>
+            <!-- site_type is set automatically from global settings; admin should not choose it -->
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
         </form>

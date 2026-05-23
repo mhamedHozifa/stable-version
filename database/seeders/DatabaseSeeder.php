@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password123'),
             'role' => 'admin',
         ]);
+
+        Setting::firstOrCreate([
+            'key' => 'site_type',
+        ], [
+            'value' => 'clothing',
+        ]);
+
        $this->call(ProductSeeder::class);
        $this->call(OrderSeeder::class);
     }

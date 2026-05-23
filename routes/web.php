@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\User\AuthController;
 use App\Models\Order; // Needed for route model binding type hints
 use App\Http\Controllers\User\ProfileController;
@@ -31,8 +32,10 @@ Route::prefix('admin')->middleware(['AdminProtectMiddleware'])->group(function (
         })->name('dashboard');
     Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
     Route::get('/products/{product}/edit-data', [App\Http\Controllers\Admin\ProductController::class, 'editData'])->name('products.edit-data');
-    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class); 
+    Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
     Route::get('/categories/{category}/edit-data', [App\Http\Controllers\Admin\CategoryController::class, 'editData'])->name('categories.edit-data');
+    Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'edit'])->name('admin.settings.edit');
+    Route::patch('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('admin.settings.update');
     /* logout route should be protected with the middleware because it exists inside the admin
     dashboard page which doesnt allow any route that is not protected with the 
     amiddleware */
@@ -100,6 +103,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/products', [ProductController::class, 'publicIndex'])->name('shop.products.index');
+Route::get('/categories/{category}/products', [ProductController::class, 'publicByCategory'])->name('shop.products.by.category');
 Route::get('/products/{product}', [ProductController::class, 'publicShow'])->name('shop.products.show');
 
 // Cart routes

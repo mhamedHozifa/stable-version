@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Documentation - laravel/laravel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #3490dc;
+      --secondary-color: #38c172;
+      --dark-color: #2d3748;
+      --light-color: #f8fafc;
+      --get-color: #3490dc;
+      --post-color: #38c172;
+      --put-color: #f6993f;
+      --patch-color: #f6993f;
+      --delete-color: #e3342f;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    h1, h2, h3 {
+      color: var(--dark-color);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: var(--light-color);
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+.navbar {
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #1abc9c;
+}
+
+.github-link {
+  background-color: #b43355;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.github-link:hover {
+  background-color: #bdc3c7;
+  color: #2c3e50;
+}
+
+    code {
+      background: #f4f4f4;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: #ddd;
+      margin: 2rem 0;
+    }
+    .method {
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 70px;
+      text-align: center;
+    }
+    .method-get { background-color: var(--get-color); }
+    .method-post { background-color: var(--post-color); }
+    .method-put, .method-patch { background-color: var(--put-color); }
+    .method-delete { background-color: var(--delete-color); }
+    
+    #api-content ul {
+      padding-left: 20px;
+    }
+    #api-content li {
+      margin-bottom: 5px;
+    }
+    
+    /* Interactive elements */
+    .search-container {
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: 80px;
+      z-index: 99;
+      background: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    #search {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .endpoint-container {
+      margin-bottom: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .endpoint-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      background-color: var(--light-color);
+      cursor: pointer;
+    }
+    .endpoint-header h3 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    .endpoint-content {
+      padding: 0.75rem;
+      display: none;
+    }
+    .endpoint-content.active {
+      display: block;
+    }
+    .try-it {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .try-it:hover {
+      opacity: 0.9;
+    }
+    .try-it-form {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .form-group textarea {
+      height: 100px;
+    }
+    .response-container {
+      margin-top: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      display: none;
+    }
+    .response-header {
+      padding: 0.5rem;
+      background-color: var(--light-color);
+      display: flex;
+      justify-content: space-between;
+    }
+    .response-body {
+      padding: 0.5rem;
+      overflow-x: auto;
+    }
+    .collapse-icon {
+      margin-right: 8px;
+      transition: transform 0.3s;
+    }
+    .endpoint-header.active .collapse-icon {
+      transform: rotate(90deg);
+    }
+    #dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--dark-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .dark-mode {
+      background-color: #1a202c;
+      color: #f7fafc;
+    }
+    .dark-mode header {
+      background-color: #2d3748;
+    }
+    .dark-mode table, .dark-mode th, .dark-mode td {
+      border-color: #4a5568;
+    }
+    .dark-mode th, .dark-mode .endpoint-header {
+      background-color: #2d3748;
+      color: #f7fafc;
+    }
+    .dark-mode tr:nth-child(even) {
+      background-color: #2d3748;
+    }
+    .dark-mode code, .dark-mode pre {
+      background-color: #2d3748;
+      color: #f7fafc;
+    }
+    
+    @media (max-width: 768px) {
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<!-- Add Font Awesome CDN if not already included -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="navbar">
+  <div class="navbar-title">
+    <i class="fas fa-code-branch"></i> Laravel2Doc
+  </div>
+  <div class="navbar-links">
+    <a href="https://laravel2doc.netlify.app/"><i class="fas fa-house"></i> Home</a>
+    <a href="../erd/"><i class="fas fa-project-diagram"></i> ERD</a>
+    <a href="../uml/"><i class="fas fa-sitemap"></i> UML</a>
+    <a href="../sequence/"><i class="fas fa-stream"></i> Sequence</a>
+    <a href="../api/"><i class="fas fa-plug"></i> API</a>
+    <a href="https://github.com/Priom7/laravel2doc" target="_blank" class="github-link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+</div>
+
+  <header>
+    <h1>API Documentation</h1>
+    <h2>laravel/laravel (Laravel v12.53.0)</h2>
+  </header>
+  
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search endpoints, methods, or descriptions...">
+  </div>
+  
+  <main class="markdown-body">
+    <div id="api-content">
+      <h1 id="API Documentation">API Documentation</h1>
+
+<h2 id="Project: laravel/laravel">Project: laravel/laravel</h2>
+
+<p>Laravel Version: v12.53.0</p>
+
+<p>Generated: ١٩‏/٥‏/٢٠٢٦، ٧:٢٠:١٨ م</p>
+
+<h2 id="Table of Contents">Table of Contents</h2>
+
+<ul><li>[web](#web)</li>
+<p></ul></p>
+<h2 id="web">web</h2>
+
+<table>
+<p>      <thead></p>
+<p>        <tr><th>Method</th><th>Endpoint</th><th>Handler</th><th>Description</th></tr></p>
+<p>      </thead></p>
+<p>      <tbody></p>
+<p>        <tr><td>GET</td><td>/admin/login</td><td>AdminLoginController::class, 'create'</td><td>List login</td></tr><tr><td>POST</td><td>/admin/login</td><td>AdminLoginController::class, 'store'</td><td>Create a new login</td></tr></p>
+<p>      </tbody></p>
+<p>    </table>| GET | / | function () {</p>
+<p>            return view('admin.dashboard', [</p>
+<p>                'productsCount' => Product::count(),</p>
+<p>                'categoriesCount' => Category::count(),</p>
+<p>                'featuredCount' => Product::where('is_featured', true)->count(),</p>
+<p>                'lowStockCount' => Product::where('stock', '<=', 5)->count(),</p>
+<p>             | List resource |</p>
+<p>| GET | /products/{product}/edit-data | App\Http\Controllers\Admin\ProductController::class, 'editData' | Retrieve a specific edit-data |</p>
+<p>| GET | /categories/{category}/edit-data | App\Http\Controllers\Admin\CategoryController::class, 'editData' | Retrieve a specific edit-data |</p>
+<p>| GET | /settings | App\Http\Controllers\Admin\SettingsController::class, 'edit' | List settings |</p>
+<p>| PATCH | /settings | App\Http\Controllers\Admin\SettingsController::class, 'update' | Update a specific settings |</p>
+<p>| POST | /logout | AdminLoginController::class, 'logout' | Create a new logout |</p>
+<p>| GET | /orders | OrderController::class, 'index' | List orders |</p>
+<p>| GET | /orders/{order} | OrderController::class, 'show' | Retrieve a specific {order} |</p>
+<p>| POST | /orders/{order}/status | OrderController::class, 'updateStatus' | Create a new status |</p>
+<p>| POST | /orders/{order}/refund | OrderController::class, 'refund' | Create a new refund |</p>
+<p>| GET | /orders/{order}/packing-slip | OrderController::class, 'packingSlip' | Retrieve a specific packing-slip |</p>
+<p>| GET | /register | AuthController::class, 'showRegisterForm' | List register |</p>
+<p>| POST | /register | AuthController::class, 'register' | Create a new register |</p>
+<p>| GET | / | AuthController::class, 'showLoginForm' | List resource |</p>
+<p>| GET | /login | AuthController::class, 'showLoginForm' | List login |</p>
+<p>| POST | / | AuthController::class, 'login' | Create a new resource |</p>
+<p>| POST | /logout | AuthController::class, 'logout' | Create a new logout |</p>
+<p>| GET | /forgot-password | AuthController::class, 'showForgotForm' | List forgot-password |</p>
+<p>| POST | /forgot-password | AuthController::class, 'sendResetLink' | Create a new forgot-password |</p>
+<p>| GET | /reset-password/{token} | AuthController::class, 'showResetForm' | Retrieve a specific {token} |</p>
+<p>| POST | /reset-password | AuthController::class, 'reset' | Create a new reset-password |</p>
+<p>| GET | /logout-form | AuthController::class, 'showLogoutForm' | List logout-form |</p>
+<p>| GET | /profile | ProfileController::class, 'edit' | List profile |</p>
+<p>| PATCH | /profile | ProfileController::class, 'update' | Update a specific profile |</p>
+<p>| GET | /products | ProductController::class, 'publicIndex' | List products |</p>
+<p>| GET | /products/{product} | ProductController::class, 'publicShow' | Retrieve a specific {product} |</p>
+<p>| POST | /cart/add/{product} | CartController::class, 'add' | Create a new {product} |</p>
+<p>| GET | /cart | CartController::class, 'index' | List cart |</p>
+<p>| PATCH | /cart/update/{product} | CartController::class, 'update' | Update a specific {product} |</p>
+<p>| DELETE | /cart/remove/{product} | CartController::class, 'remove' | Delete a specific {product} |</p>
+<p>| POST | /cart/clear | CartController::class, 'clear' | Create a new clear |</p>
+<p>| GET | /cart/checkout | CartController::class, 'checkout' | List checkout |</p>
+<p>| POST | /cart/checkout | CartController::class, 'processCheckout' | Create a new checkout |</p>
+<p>| POST | /checkout/process | CheckoutController::class, 'processCheckout' | Create a new process |</p>
+<p>| GET | /checkout/success | CheckoutController::class, 'success' | List success |</p>
+<p>| GET | /checkout/cancel | CheckoutController::class, 'cancel' | List cancel |</p>
+<p>| GET | /products/{product} | ProductController::class, 'publicShow' | Retrieve a specific {product} |</p>
+
+<p>### GET /admin/login</p>
+
+<p><strong>Handler:</strong> AdminLoginController::class, 'create'</p>
+
+<p><strong>Description:</strong> List login</p>
+
+<hr>
+
+<p>### POST /admin/login</p>
+
+<p><strong>Handler:</strong> AdminLoginController::class, 'store'</p>
+
+<p><strong>Description:</strong> Create a new login</p>
+
+<hr>
+
+<p>### GET /</p>
+
+<p><strong>Handler:</strong> function () {</p>
+<p>            return view('admin.dashboard', [</p>
+<p>                'productsCount' => Product::count(),</p>
+<p>                'categoriesCount' => Category::count(),</p>
+<p>                'featuredCount' => Product::where('is_featured', true)->count(),</p>
+<p>                'lowStockCount' => Product::where('stock', '<=', 5)->count(),</p>
+<p>            </p>
+
+<p><strong>Description:</strong> List resource</p>
+
+<hr>
+
+<p>### GET /products/{product}/edit-data</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class, 'editData'</p>
+
+<p><strong>Description:</strong> Retrieve a specific edit-data</p>
+
+<hr>
+
+<p>### GET /categories/{category}/edit-data</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class, 'editData'</p>
+
+<p><strong>Description:</strong> Retrieve a specific edit-data</p>
+
+<hr>
+
+<p>### GET /settings</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\SettingsController::class, 'edit'</p>
+
+<p><strong>Description:</strong> List settings</p>
+
+<hr>
+
+<p>### PATCH /settings</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\SettingsController::class, 'update'</p>
+
+<p><strong>Description:</strong> Update a specific settings</p>
+
+<hr>
+
+<p>### POST /logout</p>
+
+<p><strong>Handler:</strong> AdminLoginController::class, 'logout'</p>
+
+<p><strong>Description:</strong> Create a new logout</p>
+
+<hr>
+
+<p>### GET /orders</p>
+
+<p><strong>Handler:</strong> OrderController::class, 'index'</p>
+
+<p><strong>Description:</strong> List orders</p>
+
+<hr>
+
+<p>### GET /orders/{order}</p>
+
+<p><strong>Handler:</strong> OrderController::class, 'show'</p>
+
+<p><strong>Description:</strong> Retrieve a specific {order}</p>
+
+<hr>
+
+<p>### POST /orders/{order}/status</p>
+
+<p><strong>Handler:</strong> OrderController::class, 'updateStatus'</p>
+
+<p><strong>Description:</strong> Create a new status</p>
+
+<hr>
+
+<p>### POST /orders/{order}/refund</p>
+
+<p><strong>Handler:</strong> OrderController::class, 'refund'</p>
+
+<p><strong>Description:</strong> Create a new refund</p>
+
+<hr>
+
+<p>### GET /orders/{order}/packing-slip</p>
+
+<p><strong>Handler:</strong> OrderController::class, 'packingSlip'</p>
+
+<p><strong>Description:</strong> Retrieve a specific packing-slip</p>
+
+<hr>
+
+<p>### GET /register</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showRegisterForm'</p>
+
+<p><strong>Description:</strong> List register</p>
+
+<hr>
+
+<p>### POST /register</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'register'</p>
+
+<p><strong>Description:</strong> Create a new register</p>
+
+<hr>
+
+<p>### GET /</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showLoginForm'</p>
+
+<p><strong>Description:</strong> List resource</p>
+
+<hr>
+
+<p>### GET /login</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showLoginForm'</p>
+
+<p><strong>Description:</strong> List login</p>
+
+<hr>
+
+<p>### POST /</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'login'</p>
+
+<p><strong>Description:</strong> Create a new resource</p>
+
+<hr>
+
+<p>### POST /logout</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'logout'</p>
+
+<p><strong>Description:</strong> Create a new logout</p>
+
+<hr>
+
+<p>### GET /forgot-password</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showForgotForm'</p>
+
+<p><strong>Description:</strong> List forgot-password</p>
+
+<hr>
+
+<p>### POST /forgot-password</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'sendResetLink'</p>
+
+<p><strong>Description:</strong> Create a new forgot-password</p>
+
+<hr>
+
+<p>### GET /reset-password/{token}</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showResetForm'</p>
+
+<p><strong>Description:</strong> Retrieve a specific {token}</p>
+
+<hr>
+
+<p>### POST /reset-password</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'reset'</p>
+
+<p><strong>Description:</strong> Create a new reset-password</p>
+
+<hr>
+
+<p>### GET /logout-form</p>
+
+<p><strong>Handler:</strong> AuthController::class, 'showLogoutForm'</p>
+
+<p><strong>Description:</strong> List logout-form</p>
+
+<hr>
+
+<p>### GET /profile</p>
+
+<p><strong>Handler:</strong> ProfileController::class, 'edit'</p>
+
+<p><strong>Description:</strong> List profile</p>
+
+<hr>
+
+<p>### PATCH /profile</p>
+
+<p><strong>Handler:</strong> ProfileController::class, 'update'</p>
+
+<p><strong>Description:</strong> Update a specific profile</p>
+
+<hr>
+
+<p>### GET /products</p>
+
+<p><strong>Handler:</strong> ProductController::class, 'publicIndex'</p>
+
+<p><strong>Description:</strong> List products</p>
+
+<hr>
+
+<p>### GET /products/{product}</p>
+
+<p><strong>Handler:</strong> ProductController::class, 'publicShow'</p>
+
+<p><strong>Description:</strong> Retrieve a specific {product}</p>
+
+<hr>
+
+<p>### POST /cart/add/{product}</p>
+
+<p><strong>Handler:</strong> CartController::class, 'add'</p>
+
+<p><strong>Description:</strong> Create a new {product}</p>
+
+<hr>
+
+<p>### GET /cart</p>
+
+<p><strong>Handler:</strong> CartController::class, 'index'</p>
+
+<p><strong>Description:</strong> List cart</p>
+
+<hr>
+
+<p>### PATCH /cart/update/{product}</p>
+
+<p><strong>Handler:</strong> CartController::class, 'update'</p>
+
+<p><strong>Description:</strong> Update a specific {product}</p>
+
+<hr>
+
+<p>### DELETE /cart/remove/{product}</p>
+
+<p><strong>Handler:</strong> CartController::class, 'remove'</p>
+
+<p><strong>Description:</strong> Delete a specific {product}</p>
+
+<hr>
+
+<p>### POST /cart/clear</p>
+
+<p><strong>Handler:</strong> CartController::class, 'clear'</p>
+
+<p><strong>Description:</strong> Create a new clear</p>
+
+<hr>
+
+<p>### GET /cart/checkout</p>
+
+<p><strong>Handler:</strong> CartController::class, 'checkout'</p>
+
+<p><strong>Description:</strong> List checkout</p>
+
+<hr>
+
+<p>### POST /cart/checkout</p>
+
+<p><strong>Handler:</strong> CartController::class, 'processCheckout'</p>
+
+<p><strong>Description:</strong> Create a new checkout</p>
+
+<hr>
+
+<p>### POST /checkout/process</p>
+
+<p><strong>Handler:</strong> CheckoutController::class, 'processCheckout'</p>
+
+<p><strong>Description:</strong> Create a new process</p>
+
+<hr>
+
+<p>### GET /checkout/success</p>
+
+<p><strong>Handler:</strong> CheckoutController::class, 'success'</p>
+
+<p><strong>Description:</strong> List success</p>
+
+<hr>
+
+<p>### GET /checkout/cancel</p>
+
+<p><strong>Handler:</strong> CheckoutController::class, 'cancel'</p>
+
+<p><strong>Description:</strong> List cancel</p>
+
+<hr>
+
+<p>### GET /products/{product}</p>
+
+<p><strong>Handler:</strong> ProductController::class, 'publicShow'</p>
+
+<p><strong>Description:</strong> Retrieve a specific {product}</p>
+
+<hr>
+
+<p>### Resource</p>
+
+<table>
+<p>      <thead></p>
+<p>        <tr><th>Method</th><th>Endpoint</th><th>Handler</th><th>Description</th></tr></p>
+<p>      </thead></p>
+<p>      <tbody></p>
+<p>        <tr><td>GET</td><td>/products</td><td>App\Http\Controllers\Admin\ProductController::class@index</td><td>List all products</td></tr><tr><td>GET</td><td>/products/create</td><td>App\Http\Controllers\Admin\ProductController::class@create</td><td>Show form to create a new product</td></tr><tr><td>POST</td><td>/products</td><td>App\Http\Controllers\Admin\ProductController::class@store</td><td>Store a new product</td></tr><tr><td>GET</td><td>/products/{id}</td><td>App\Http\Controllers\Admin\ProductController::class@show</td><td>Show a specific product</td></tr><tr><td>GET</td><td>/products/{id}/edit</td><td>App\Http\Controllers\Admin\ProductController::class@edit</td><td>Show form to edit product</td></tr><tr><td>PUT/PATCH</td><td>/products/{id}</td><td>App\Http\Controllers\Admin\ProductController::class@update</td><td>Update a specific product</td></tr><tr><td>DELETE</td><td>/products/{id}</td><td>App\Http\Controllers\Admin\ProductController::class@destroy</td><td>Delete a specific product</td></tr><tr><td>GET</td><td>/categories</td><td>App\Http\Controllers\Admin\CategoryController::class@index</td><td>List all categories</td></tr><tr><td>GET</td><td>/categories/create</td><td>App\Http\Controllers\Admin\CategoryController::class@create</td><td>Show form to create a new categorie</td></tr><tr><td>POST</td><td>/categories</td><td>App\Http\Controllers\Admin\CategoryController::class@store</td><td>Store a new categorie</td></tr><tr><td>GET</td><td>/categories/{id}</td><td>App\Http\Controllers\Admin\CategoryController::class@show</td><td>Show a specific categorie</td></tr><tr><td>GET</td><td>/categories/{id}/edit</td><td>App\Http\Controllers\Admin\CategoryController::class@edit</td><td>Show form to edit categorie</td></tr><tr><td>PUT/PATCH</td><td>/categories/{id}</td><td>App\Http\Controllers\Admin\CategoryController::class@update</td><td>Update a specific categorie</td></tr><tr><td>DELETE</td><td>/categories/{id}</td><td>App\Http\Controllers\Admin\CategoryController::class@destroy</td><td>Delete a specific categorie</td></tr></p>
+<p>      </tbody></p>
+<p>    </table></p>
+<p>### GET /products</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@index</p>
+
+<p><strong>Description:</strong> List all products</p>
+
+<hr>
+
+<p>### GET /products/create</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@create</p>
+
+<p><strong>Description:</strong> Show form to create a new product</p>
+
+<hr>
+
+<p>### POST /products</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@store</p>
+
+<p><strong>Description:</strong> Store a new product</p>
+
+<hr>
+
+<p>### GET /products/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@show</p>
+
+<p><strong>Description:</strong> Show a specific product</p>
+
+<hr>
+
+<p>### GET /products/{id}/edit</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@edit</p>
+
+<p><strong>Description:</strong> Show form to edit product</p>
+
+<hr>
+
+<p>### PUT/PATCH /products/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@update</p>
+
+<p><strong>Description:</strong> Update a specific product</p>
+
+<hr>
+
+<p>### DELETE /products/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\ProductController::class@destroy</p>
+
+<p><strong>Description:</strong> Delete a specific product</p>
+
+<hr>
+
+<p>### GET /categories</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@index</p>
+
+<p><strong>Description:</strong> List all categories</p>
+
+<hr>
+
+<p>### GET /categories/create</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@create</p>
+
+<p><strong>Description:</strong> Show form to create a new categorie</p>
+
+<hr>
+
+<p>### POST /categories</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@store</p>
+
+<p><strong>Description:</strong> Store a new categorie</p>
+
+<hr>
+
+<p>### GET /categories/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@show</p>
+
+<p><strong>Description:</strong> Show a specific categorie</p>
+
+<hr>
+
+<p>### GET /categories/{id}/edit</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@edit</p>
+
+<p><strong>Description:</strong> Show form to edit categorie</p>
+
+<hr>
+
+<p>### PUT/PATCH /categories/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@update</p>
+
+<p><strong>Description:</strong> Update a specific categorie</p>
+
+<hr>
+
+<p>### DELETE /categories/{id}</p>
+
+<p><strong>Handler:</strong> App\Http\Controllers\Admin\CategoryController::class@destroy</p>
+
+<p><strong>Description:</strong> Delete a specific categorie</p>
+
+<hr>
+
+
+    </div>
+  </main>
+  
+  <button id="dark-mode-toggle">🌓</button>
+
+  <script>
+    hljs.highlightAll();
+    
+    // Add method color classes
+    document.querySelectorAll('table td:first-child').forEach(cell => {
+      const method = cell.textContent.trim().toLowerCase();
+      const methods = method.split('/');
+      
+      if (methods.length) {
+        const mainMethod = methods[0].toLowerCase();
+        if (['get', 'post', 'put', 'patch', 'delete'].includes(mainMethod)) {
+          cell.innerHTML = `<span class="method method-${mainMethod}">${cell.textContent}</span>`;
+        }
+      }
+    });
+    
+    // Interactive search
+    const search = document.getElementById('search');
+    search.addEventListener('input', function() {
+      const value = this.value.toLowerCase();
+      const endpoints = document.querySelectorAll('.endpoint-container');
+      
+      endpoints.forEach(endpoint => {
+        const text = endpoint.textContent.toLowerCase();
+        const match = text.includes(value);
+        endpoint.style.display = match ? 'block' : 'none';
+      });
+    });
+    
+    // Toggle endpoint details
+    document.querySelectorAll('.endpoint-header').forEach(header => {
+      header.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        content.classList.toggle('active');
+      });
+    });
+    
+    // Try It functionality
+    document.querySelectorAll('.try-it').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const container = this.closest('.endpoint-container');
+        const content = container.querySelector('.endpoint-content');
+        
+        if (!content.classList.contains('active')) {
+          container.querySelector('.endpoint-header').click();
+        }
+        
+        // Create form if it doesn't exist
+        if (!container.querySelector('.try-it-form')) {
+          const method = container.getAttribute('data-method');
+          const endpoint = container.getAttribute('data-endpoint');
+          
+          const form = document.createElement('div');
+          form.className = 'try-it-form';
+          form.innerHTML = `
+            <h4>Test Request</h4>
+            <div class="form-group">
+              <label>URL</label>
+              <input type="text" class="url-input" value="${window.location.origin}${endpoint}" readonly>
+            </div>
+            ${method !== 'GET' ? `
+              <div class="form-group">
+                <label>Request Body (JSON)</label>
+                <textarea class="body-input">{}</textarea>
+              </div>
+            ` : ''}
+            <div class="form-group">
+              <button type="button" class="send-request">Send Request</button>
+            </div>
+            <div class="response-container">
+              <div class="response-header">
+                <span class="response-status"></span>
+                <span class="response-time"></span>
+              </div>
+              <div class="response-body">
+                <pre><code class="language-json response-code"></code></pre>
+              </div>
+            </div>
+          `;
+          
+          content.appendChild(form);
+          
+          // Add event listener to send button
+          form.querySelector('.send-request').addEventListener('click', async function() {
+            const urlInput = form.querySelector('.url-input');
+            const bodyInput = form.querySelector('.body-input');
+            const responseContainer = form.querySelector('.response-container');
+            const responseStatus = form.querySelector('.response-status');
+            const responseTime = form.querySelector('.response-time');
+            const responseCode = form.querySelector('.response-code');
+            
+            const url = urlInput.value;
+            const body = bodyInput ? bodyInput.value : null;
+            
+            const startTime = Date.now();
+            
+            try {
+              responseContainer.style.display = 'block';
+              responseStatus.textContent = 'Loading...';
+              responseTime.textContent = '';
+              responseCode.textContent = '';
+              
+              // Note: In a real implementation, you would make actual API calls
+              // For demo purposes, we're just simulating a response
+              const response = {
+                status: 200,
+                statusText: 'OK',
+                data: { 
+                  message: "This is a simulated response for demonstration.",
+                  method: method,
+                  url: url,
+                  receivedBody: body ? JSON.parse(body) : null
+                }
+              };
+              
+              const endTime = Date.now();
+              const time = endTime - startTime;
+              
+              setTimeout(() => {
+                responseStatus.textContent = `Status: ${response.status} ${response.statusText}`;
+                responseTime.textContent = `Time: ${time}ms`;
+                responseCode.textContent = JSON.stringify(response.data, null, 2);
+                hljs.highlightElement(responseCode);
+              }, 500); // Simulate network delay
+              
+            } catch (error) {
+              responseStatus.textContent = 'Error';
+              responseCode.textContent = error.toString();
+              hljs.highlightElement(responseCode);
+            }
+          });
+        }
+      });
+    });
+    
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+    
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>
+  

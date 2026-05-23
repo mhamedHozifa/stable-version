@@ -41,13 +41,24 @@ class ProductController extends Controller
 
          'category_id' => 'nullable|exists:categories,id',
           'image' => 'nullable|image|max:2048',
-          'is_featured' => 'nullable|boolean'
+          'is_featured' => 'nullable|boolean',
+          'attributes' => 'nullable|array',
+          'attributes.*' => 'nullable|string'
     ]);
 
-    if ($request->hasFile('image'))
-      {
-        $validated['image'] = $request->file('image')->store('products', 'public');
-      }
+        if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $folder = public_path('images/products');
+                if (!file_exists($folder)) {
+                        mkdir($folder, 0755, true);
+                }
+                $filename = time() . '_' . preg_replace('/[^A-Za-z0-9\-_.]/', '_', $file->getClientOriginalName());
+                $file->move($folder, $filename);
+                $validated['image'] = 'images/products/' . $filename;
+        }
+
+      // Save attributes (casts handle JSON conversion)
+      $validated['attributes'] = $request->input('attributes', null);
 
        Product::create($validated);
 
@@ -82,16 +93,27 @@ public function update(Request $request, Product $product)
           'stock' => 'required|integer|min:0',
            'category_id' => 'nullable|exists:categories,id',
            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-           'is_featured' => 'nullable|boolean'
+       'is_featured' => 'nullable|boolean',
+       'attributes' => 'nullable|array',
+       'attributes.*' => 'nullable|string'
         ]);
             $validated['is_featured'] = $request->has('is_featured') ? 1 : 0;
-         if ($request->hasFile('image')) {
-           if ($product->image)
-              {
-                Storage::disk('public')->delete($product->image);
-              }
-             $validated['image'] = $request->file('image')->store('products', 'public');
-    }
+      $validated['attributes'] = $request->input('attributes', null);
+        if ($request->hasFile('image')) {
+            // delete old image from public folder if present
+            if ($product->image && file_exists(public_path($product->image))) {
+                @unlink(public_path($product->image));
+            }
+
+            $file = $request->file('image');
+            $folder = public_path('images/products');
+            if (!file_exists($folder)) {
+                mkdir($folder, 0755, true);
+            }
+            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9\-_.]/', '_', $file->getClientOriginalName());
+            $file->move($folder, $filename);
+            $validated['image'] = 'images/products/' . $filename;
+        }
 
         $product->update($validated);
 
@@ -102,13 +124,12 @@ public function update(Request $request, Product $product)
     /**
      * Remove the specified resource from storage.
      */
-     public function destroy(Product $product)
-     {
-       if ($product->image) 
+        public function destroy(Product $product)
         {
-          Storage::disk('public')->delete($product->image);
-        }
-      $product->delete();
+                if ($product->image && file_exists(public_path($product->image))) {
+                        @unlink(public_path($product->image));
+                }
+                $product->delete();
 
       return redirect()->route('products.index')
                        ->with('success', 'تم حذف المنتج بنجاح');
@@ -126,6 +147,17 @@ public function update(Request $request, Product $product)
             ->paginate(12);
 
         return view('products.index', compact('products'));
+    }
+
+    public function publicByCategory(Category $category)
+    {
+        $products = Product::query()
+            ->where('category_id', $category->id)
+            ->select(['id', 'name', 'price', 'image', 'description', 'created_at'])
+            ->latest()
+            ->paginate(12);
+
+        return view('products.index', compact('products', 'category'));
     }
 
     public function publicShow(Product $product)
