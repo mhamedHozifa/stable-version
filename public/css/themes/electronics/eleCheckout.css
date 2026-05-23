@@ -1,0 +1,397 @@
+/* ---------------------------------------------
+   checkout.css – same dark blue & light white theme
+   as eleStore. Includes two-column layout,
+   billing form, order summary table, responsive
+--------------------------------------------- */
+
+/* base reset (inherits from ele.css) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f4f8;
+    color: #0a1c2f;
+    line-height: 1.5;
+}
+
+/* ---------- TRANSPARENT HEADER (identical to ele.css) ---------- */
+.transparent-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 28, 47, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 100;
+    padding: 0.9rem 2rem;
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo-area .store-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e6 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #eef2ff;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #7aa2f7;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1.2rem;
+    color: #eef2ff;
+    font-size: 1.2rem;
+}
+
+.header-actions i {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.header-actions i:hover {
+    color: #ffffff;
+}
+
+/* container (same as main container in store) */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+}
+
+/* hero section (same as eleStore) */
+.hero-section {
+    text-align: center;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0a1c2f;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #2c3e5c;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ---------- CHECKOUT TWO-COLUMN LAYOUT ---------- */
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+/* Billing card & order summary card */
+.billing-card,
+.order-summary-card {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 20px rgba(10, 28, 47, 0.08);
+    border: 1px solid #e2e8f0;
+    padding: 1.8rem;
+    transition: box-shadow 0.2s;
+}
+
+.billing-card:hover,
+.order-summary-card:hover {
+    box-shadow: 0 20px 30px -12px rgba(10, 28, 47, 0.15);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0a1c2f;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-left: 4px solid #1e3a6b;
+    padding-left: 0.75rem;
+}
+
+.card-title i {
+    color: #1e3a6b;
+    font-size: 1.3rem;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1e2f44;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1e3a6b;
+    box-shadow: 0 0 0 3px rgba(30, 58, 107, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+/* Pay Now Button (matches add-to-cart style but full width) */
+.btn-pay-now {
+    background: #0a1c2f;
+    border: none;
+    border-radius: 40px;
+    padding: 0.9rem 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+    margin-top: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-pay-now i {
+    font-size: 1rem;
+}
+
+.btn-pay-now:hover {
+    background: #153e6b;
+}
+
+.btn-pay-now:active {
+    transform: scale(0.98);
+}
+
+/* Order Summary Table */
+.summary-table-wrapper {
+    overflow-x: auto;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 0.9rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e9edf2;
+}
+
+.summary-table th {
+    font-weight: 600;
+    color: #1e3a6b;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-name-cell {
+    font-weight: 500;
+    color: #0a1c2f;
+}
+
+.price-cell,
+.qty-cell,
+.subtotal-cell {
+    color: #2c3e5c;
+}
+
+.subtotal-cell {
+    font-weight: 500;
+}
+
+/* Table footer rows */
+.summary-table tfoot tr td {
+    border-bottom: none;
+    padding: 0.7rem 0.5rem;
+}
+
+.summary-table tfoot tr:first-child td {
+    padding-top: 1rem;
+}
+
+.subtotal-row td,
+.shipping-row td,
+.tax-row td {
+    font-weight: 400;
+    color: #2c3e5c;
+}
+
+.total-row td {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #0a1c2f;
+    border-top: 2px solid #cbd5e6;
+    padding-top: 1rem;
+}
+
+.grand-total {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #1e3a6b;
+}
+
+.secure-notice {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: #4a627a;
+    background: #f0f4fa;
+    padding: 0.6rem;
+    border-radius: 40px;
+    display: inline-block;
+    width: 100%;
+}
+
+.secure-notice i {
+    margin-right: 0.4rem;
+    color: #2e7d32;
+}
+
+/* Checkout footer (simple) */
+.checkout-footer {
+    text-align: center;
+    padding: 2rem 1rem 1.5rem;
+    font-size: 0.8rem;
+    color: #6c86a3;
+    border-top: 1px solid #dce3ec;
+    margin-top: 2rem;
+}
+
+/* ---------- RESPONSIVE (matches ele.css breakpoints) ---------- */
+@media (max-width: 1024px) {
+    .checkout-layout {
+        gap: 1.5rem;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    .main-nav ul {
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+    }
+    .billing-card,
+    .order-summary-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 1rem 1.25rem;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .summary-table th,
+    .summary-table td {
+        padding: 0.7rem 0.3rem;
+        font-size: 0.85rem;
+    }
+    .card-title {
+        font-size: 1.3rem;
+    }
+    .transparent-header {
+        padding: 0.7rem 1rem;
+    }
+    .main-nav ul {
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    .btn-pay-now {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+    .summary-table {
+        font-size: 0.8rem;
+    }
+    .grand-total {
+        font-size: 1rem;
+    }
+}
