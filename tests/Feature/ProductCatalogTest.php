@@ -33,7 +33,7 @@ class ProductCatalogTest extends TestCase
         $response->assertOk();
         $response->assertSee($product->name);
         $response->assertSee('$149.99');
-        $response->assertSee('storage/products/catalog-image.jpg');
+        $response->assertSee('images/products/catalog-image.jpg');
     }
 
     public function test_products_index_is_paginated(): void

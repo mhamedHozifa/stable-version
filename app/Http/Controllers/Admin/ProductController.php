@@ -5,8 +5,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\Storage;
-
 
 class ProductController extends Controller
 {
@@ -46,16 +44,18 @@ class ProductController extends Controller
           'attributes.*' => 'nullable|string'
     ]);
 
-        if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $folder = public_path('images/products');
-                if (!file_exists($folder)) {
-                        mkdir($folder, 0755, true);
-                }
-                $filename = time() . '_' . preg_replace('/[^A-Za-z0-9\-_.]/', '_', $file->getClientOriginalName());
-                $file->move($folder, $filename);
-                $validated['image'] = 'images/products/' . $filename;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $destinationPath = public_path('images/products');
+
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
         }
+
+        $imageName = uniqid('product_') . '.' . $image->getClientOriginalExtension();
+        $image->move($destinationPath, $imageName);
+        $validated['image'] = 'images/products/' . $imageName;
+    }
 
       // Save attributes (casts handle JSON conversion)
       $validated['attributes'] = $request->input('attributes', null);
@@ -99,21 +99,25 @@ public function update(Request $request, Product $product)
         ]);
             $validated['is_featured'] = $request->has('is_featured') ? 1 : 0;
       $validated['attributes'] = $request->input('attributes', null);
-        if ($request->hasFile('image')) {
-            // delete old image from public folder if present
-            if ($product->image && file_exists(public_path($product->image))) {
-                @unlink(public_path($product->image));
-            }
+         if ($request->hasFile('image')) {
+             if ($product->image) {
+                 $existingImage = public_path($product->image);
+                 if (file_exists($existingImage)) {
+                     unlink($existingImage);
+                 }
+             }
 
-            $file = $request->file('image');
-            $folder = public_path('images/products');
-            if (!file_exists($folder)) {
-                mkdir($folder, 0755, true);
-            }
-            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9\-_.]/', '_', $file->getClientOriginalName());
-            $file->move($folder, $filename);
-            $validated['image'] = 'images/products/' . $filename;
-        }
+             $image = $request->file('image');
+             $destinationPath = public_path('images/products');
+
+             if (!file_exists($destinationPath)) {
+                 mkdir($destinationPath, 0755, true);
+             }
+
+             $imageName = uniqid('product_') . '.' . $image->getClientOriginalExtension();
+             $image->move($destinationPath, $imageName);
+             $validated['image'] = 'images/products/' . $imageName;
+         }
 
         $product->update($validated);
 
@@ -124,12 +128,15 @@ public function update(Request $request, Product $product)
     /**
      * Remove the specified resource from storage.
      */
-        public function destroy(Product $product)
-        {
-                if ($product->image && file_exists(public_path($product->image))) {
-                        @unlink(public_path($product->image));
-                }
-                $product->delete();
+     public function destroy(Product $product)
+     {
+       if ($product->image) {
+           $existingImage = public_path($product->image);
+           if (file_exists($existingImage)) {
+               unlink($existingImage);
+           }
+       }
+      $product->delete();
 
       return redirect()->route('products.index')
                        ->with('success', 'تم حذف المنتج بنجاح');
