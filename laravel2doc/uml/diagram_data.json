@@ -368,6 +368,10 @@
           "params": ""
         },
         {
+          "name": "publicByCategory",
+          "params": "Category $category"
+        },
+        {
           "name": "publicShow",
           "params": "Product $product"
         }

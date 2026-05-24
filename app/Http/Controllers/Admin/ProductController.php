@@ -153,7 +153,9 @@ public function update(Request $request, Product $product)
             ->latest()
             ->paginate(12);
 
-        return view('products.index', compact('products'));
+        $themePage = 'store';
+
+        return view(theme_view('store'), compact('products', 'themePage'));
     }
 
     public function publicByCategory(Category $category)
@@ -164,11 +166,15 @@ public function update(Request $request, Product $product)
             ->latest()
             ->paginate(12);
 
-        return view('products.index', compact('products', 'category'));
+        $themePage = 'store';
+
+        return view(theme_view('store'), compact('products', 'category', 'themePage'));
     }
 
     public function publicShow(Product $product)
     {
-        return view('products.show', compact('product'));
+        $themePage = 'store';
+
+        return view(theme_view('product'), compact('product', 'themePage'));
     }
 }

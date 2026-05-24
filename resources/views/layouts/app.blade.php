@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Store')</title>
     <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
+    @if(isset($themePage))
+        <link rel="stylesheet" href="{{ theme_css($themePage) }}">
+    @else
+        <link rel="stylesheet" href="{{ theme_css('store') }}">
+    @endif
     <style>
         .header-nav {
             display: flex;

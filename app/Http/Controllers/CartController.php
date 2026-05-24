@@ -36,8 +36,9 @@ class CartController extends Controller
     {
         $items = $this->cart->getItems();
         $total = $this->cart->getTotal();
+        $themePage = 'cart';
 
-        return view('cart.index', compact('items', 'total'));
+        return view(theme_view('cart'), compact('items', 'total', 'themePage'));
     }
 
     public function update(Request $request, Product $product)
@@ -80,7 +81,9 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
         }
 
-        return view('cart.checkout', compact('items', 'total'));
+        $themePage = 'checkout';
+
+        return view(theme_view('checkout'), compact('items', 'total', 'themePage'));
     }
 
     public function processCheckout(Request $request)
