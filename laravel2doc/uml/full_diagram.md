@@ -88,6 +88,7 @@ classDiagram
     +destroy(Product $product)
     +editData(Product $product)
     +publicIndex()
+    +publicByCategory(Category $category)
     +publicShow(Product $product)
   }
   class SettingsController {

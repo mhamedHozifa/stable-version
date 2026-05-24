@@ -1,7 +1,7 @@
 {
   "projectName": "laravel/laravel",
   "projectVersion": "v12.53.0",
-  "generatedAt": "2026-05-19T16:20:18.410Z",
+  "generatedAt": "2026-05-23T15:44:29.899Z",
   "diagrams": [
     {
       "id": "AdminLoginController-create",
@@ -12,7 +12,7 @@
       "description": "Creates a new resource in AdminLoginController",
       "fileName": "AdminLoginController_create.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.293Z"
+      "timestamp": "2026-05-23T15:44:29.799Z"
     },
     {
       "id": "AdminLoginController-store",
@@ -23,7 +23,7 @@
       "description": "Creates a new resource in AdminLoginController",
       "fileName": "AdminLoginController_store.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.295Z"
+      "timestamp": "2026-05-23T15:44:29.801Z"
     },
     {
       "id": "AdminLoginController-logout",
@@ -34,7 +34,7 @@
       "description": "Handles logout operation in AdminLoginController",
       "fileName": "AdminLoginController_logout.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.295Z"
+      "timestamp": "2026-05-23T15:44:29.801Z"
     },
     {
       "id": "AdminLoginController-createWelcome",
@@ -45,7 +45,7 @@
       "description": "Handles createWelcome operation in AdminLoginController",
       "fileName": "AdminLoginController_createWelcome.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.296Z"
+      "timestamp": "2026-05-23T15:44:29.802Z"
     },
     {
       "id": "CategoryController-index",
@@ -58,7 +58,7 @@
       "models": [
         "Category"
       ],
-      "timestamp": "2026-05-19T16:20:18.296Z"
+      "timestamp": "2026-05-23T15:44:29.803Z"
     },
     {
       "id": "CategoryController-create",
@@ -69,7 +69,7 @@
       "description": "Creates a new resource in CategoryController",
       "fileName": "CategoryController_create.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.296Z"
+      "timestamp": "2026-05-23T15:44:29.803Z"
     },
     {
       "id": "CategoryController-store",
@@ -83,7 +83,7 @@
         "Category",
         "Setting"
       ],
-      "timestamp": "2026-05-19T16:20:18.297Z"
+      "timestamp": "2026-05-23T15:44:29.804Z"
     },
     {
       "id": "CategoryController-edit",
@@ -94,7 +94,7 @@
       "description": "Updates an existing resource in CategoryController",
       "fileName": "CategoryController_edit.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.297Z"
+      "timestamp": "2026-05-23T15:44:29.804Z"
     },
     {
       "id": "CategoryController-update",
@@ -108,7 +108,7 @@
         "Category",
         "Setting"
       ],
-      "timestamp": "2026-05-19T16:20:18.298Z"
+      "timestamp": "2026-05-23T15:44:29.805Z"
     },
     {
       "id": "CategoryController-destroy",
@@ -119,7 +119,7 @@
       "description": "Removes a resource from CategoryController",
       "fileName": "CategoryController_destroy.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.298Z"
+      "timestamp": "2026-05-23T15:44:29.805Z"
     },
     {
       "id": "CategoryController-editData",
@@ -130,7 +130,7 @@
       "description": "Handles editData operation in CategoryController",
       "fileName": "CategoryController_editData.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.299Z"
+      "timestamp": "2026-05-23T15:44:29.806Z"
     },
     {
       "id": "OrderController-index",
@@ -143,7 +143,7 @@
       "models": [
         "Order"
       ],
-      "timestamp": "2026-05-19T16:20:18.299Z"
+      "timestamp": "2026-05-23T15:44:29.806Z"
     },
     {
       "id": "OrderController-show",
@@ -154,7 +154,7 @@
       "description": "Retrieves a specific resource from OrderController",
       "fileName": "OrderController_show.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.300Z"
+      "timestamp": "2026-05-23T15:44:29.806Z"
     },
     {
       "id": "OrderController-updateStatus",
@@ -167,7 +167,7 @@
       "models": [
         "Order"
       ],
-      "timestamp": "2026-05-19T16:20:18.300Z"
+      "timestamp": "2026-05-23T15:44:29.807Z"
     },
     {
       "id": "OrderController-refund",
@@ -180,7 +180,7 @@
       "models": [
         "Refund"
       ],
-      "timestamp": "2026-05-19T16:20:18.301Z"
+      "timestamp": "2026-05-23T15:44:29.807Z"
     },
     {
       "id": "OrderController-packingSlip",
@@ -191,7 +191,7 @@
       "description": "Handles packingSlip operation in OrderController",
       "fileName": "OrderController_packingSlip.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.301Z"
+      "timestamp": "2026-05-23T15:44:29.807Z"
     },
     {
       "id": "ProductController-index",
@@ -205,7 +205,7 @@
         "Category",
         "Product"
       ],
-      "timestamp": "2026-05-19T16:20:18.302Z"
+      "timestamp": "2026-05-23T15:44:29.808Z"
     },
     {
       "id": "ProductController-create",
@@ -216,7 +216,7 @@
       "description": "Creates a new resource in ProductController",
       "fileName": "ProductController_create.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.303Z"
+      "timestamp": "2026-05-23T15:44:29.808Z"
     },
     {
       "id": "ProductController-store",
@@ -227,7 +227,7 @@
       "description": "Creates a new resource in ProductController",
       "fileName": "ProductController_store.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.303Z"
+      "timestamp": "2026-05-23T15:44:29.809Z"
     },
     {
       "id": "ProductController-show",
@@ -238,7 +238,7 @@
       "description": "Retrieves a specific resource from ProductController",
       "fileName": "ProductController_show.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.304Z"
+      "timestamp": "2026-05-23T15:44:29.809Z"
     },
     {
       "id": "ProductController-edit",
@@ -249,7 +249,7 @@
       "description": "Updates an existing resource in ProductController",
       "fileName": "ProductController_edit.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.304Z"
+      "timestamp": "2026-05-23T15:44:29.809Z"
     },
     {
       "id": "ProductController-update",
@@ -260,7 +260,7 @@
       "description": "Updates an existing resource in ProductController",
       "fileName": "ProductController_update.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.305Z"
+      "timestamp": "2026-05-23T15:44:29.810Z"
     },
     {
       "id": "ProductController-destroy",
@@ -271,7 +271,7 @@
       "description": "Removes a resource from ProductController",
       "fileName": "ProductController_destroy.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.305Z"
+      "timestamp": "2026-05-23T15:44:29.810Z"
     },
     {
       "id": "ProductController-editData",
@@ -282,7 +282,7 @@
       "description": "Handles editData operation in ProductController",
       "fileName": "ProductController_editData.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.306Z"
+      "timestamp": "2026-05-23T15:44:29.810Z"
     },
     {
       "id": "ProductController-publicIndex",
@@ -295,7 +295,20 @@
       "models": [
         "Product"
       ],
-      "timestamp": "2026-05-19T16:20:18.306Z"
+      "timestamp": "2026-05-23T15:44:29.811Z"
+    },
+    {
+      "id": "ProductController-publicByCategory",
+      "name": "ProductController::publicByCategory",
+      "controller": "Product",
+      "method": "publicByCategory",
+      "type": "generic",
+      "description": "Handles publicByCategory operation in ProductController",
+      "fileName": "ProductController_publicByCategory.md",
+      "models": [
+        "Product"
+      ],
+      "timestamp": "2026-05-23T15:44:29.811Z"
     },
     {
       "id": "ProductController-publicShow",
@@ -306,7 +319,7 @@
       "description": "Handles publicShow operation in ProductController",
       "fileName": "ProductController_publicShow.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.307Z"
+      "timestamp": "2026-05-23T15:44:29.812Z"
     },
     {
       "id": "SettingsController-edit",
@@ -319,7 +332,7 @@
       "models": [
         "Setting"
       ],
-      "timestamp": "2026-05-19T16:20:18.308Z"
+      "timestamp": "2026-05-23T15:44:29.812Z"
     },
     {
       "id": "SettingsController-update",
@@ -332,7 +345,7 @@
       "models": [
         "Setting"
       ],
-      "timestamp": "2026-05-19T16:20:18.308Z"
+      "timestamp": "2026-05-23T15:44:29.812Z"
     },
     {
       "id": "CartController-add",
@@ -345,7 +358,7 @@
       "models": [
         "Product"
       ],
-      "timestamp": "2026-05-19T16:20:18.309Z"
+      "timestamp": "2026-05-23T15:44:29.813Z"
     },
     {
       "id": "CartController-index",
@@ -356,7 +369,7 @@
       "description": "Retrieves a collection of resources from CartController",
       "fileName": "CartController_index.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.309Z"
+      "timestamp": "2026-05-23T15:44:29.813Z"
     },
     {
       "id": "CartController-update",
@@ -369,7 +382,7 @@
       "models": [
         "Product"
       ],
-      "timestamp": "2026-05-19T16:20:18.310Z"
+      "timestamp": "2026-05-23T15:44:29.814Z"
     },
     {
       "id": "CartController-remove",
@@ -382,7 +395,7 @@
       "models": [
         "Product"
       ],
-      "timestamp": "2026-05-19T16:20:18.311Z"
+      "timestamp": "2026-05-23T15:44:29.814Z"
     },
     {
       "id": "CartController-clear",
@@ -393,7 +406,7 @@
       "description": "Handles clear operation in CartController",
       "fileName": "CartController_clear.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.312Z"
+      "timestamp": "2026-05-23T15:44:29.815Z"
     },
     {
       "id": "CartController-checkout",
@@ -404,7 +417,7 @@
       "description": "Handles checkout operation in CartController",
       "fileName": "CartController_checkout.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.313Z"
+      "timestamp": "2026-05-23T15:44:29.815Z"
     },
     {
       "id": "CartController-processCheckout",
@@ -415,7 +428,7 @@
       "description": "Handles processCheckout operation in CartController",
       "fileName": "CartController_processCheckout.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.313Z"
+      "timestamp": "2026-05-23T15:44:29.815Z"
     },
     {
       "id": "CheckoutController-processCheckout",
@@ -426,7 +439,7 @@
       "description": "Handles processCheckout operation in CheckoutController",
       "fileName": "CheckoutController_processCheckout.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.314Z"
+      "timestamp": "2026-05-23T15:44:29.816Z"
     },
     {
       "id": "CheckoutController-success",
@@ -439,7 +452,7 @@
       "models": [
         "Order"
       ],
-      "timestamp": "2026-05-19T16:20:18.315Z"
+      "timestamp": "2026-05-23T15:44:29.816Z"
     },
     {
       "id": "CheckoutController-cancel",
@@ -450,7 +463,7 @@
       "description": "Handles cancel operation in CheckoutController",
       "fileName": "CheckoutController_cancel.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.316Z"
+      "timestamp": "2026-05-23T15:44:29.817Z"
     },
     {
       "id": "AuthController-showRegisterForm",
@@ -461,7 +474,7 @@
       "description": "Handles showRegisterForm operation in AuthController",
       "fileName": "AuthController_showRegisterForm.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.317Z"
+      "timestamp": "2026-05-23T15:44:29.817Z"
     },
     {
       "id": "AuthController-register",
@@ -474,7 +487,7 @@
       "models": [
         "User"
       ],
-      "timestamp": "2026-05-19T16:20:18.317Z"
+      "timestamp": "2026-05-23T15:44:29.818Z"
     },
     {
       "id": "AuthController-showLoginForm",
@@ -485,7 +498,7 @@
       "description": "Handles showLoginForm operation in AuthController",
       "fileName": "AuthController_showLoginForm.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.318Z"
+      "timestamp": "2026-05-23T15:44:29.819Z"
     },
     {
       "id": "AuthController-login",
@@ -496,7 +509,7 @@
       "description": "Handles login operation in AuthController",
       "fileName": "AuthController_login.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.318Z"
+      "timestamp": "2026-05-23T15:44:29.819Z"
     },
     {
       "id": "AuthController-logout",
@@ -507,7 +520,7 @@
       "description": "Handles logout operation in AuthController",
       "fileName": "AuthController_logout.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.319Z"
+      "timestamp": "2026-05-23T15:44:29.820Z"
     },
     {
       "id": "AuthController-showForgotForm",
@@ -518,7 +531,7 @@
       "description": "Handles showForgotForm operation in AuthController",
       "fileName": "AuthController_showForgotForm.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.319Z"
+      "timestamp": "2026-05-23T15:44:29.821Z"
     },
     {
       "id": "AuthController-sendResetLink",
@@ -529,7 +542,7 @@
       "description": "Handles sendResetLink operation in AuthController",
       "fileName": "AuthController_sendResetLink.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.320Z"
+      "timestamp": "2026-05-23T15:44:29.821Z"
     },
     {
       "id": "AuthController-showResetForm",
@@ -540,7 +553,7 @@
       "description": "Handles showResetForm operation in AuthController",
       "fileName": "AuthController_showResetForm.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.321Z"
+      "timestamp": "2026-05-23T15:44:29.821Z"
     },
     {
       "id": "AuthController-reset",
@@ -551,7 +564,7 @@
       "description": "Handles reset operation in AuthController",
       "fileName": "AuthController_reset.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.321Z"
+      "timestamp": "2026-05-23T15:44:29.822Z"
     },
     {
       "id": "AuthController-showLogoutForm",
@@ -562,7 +575,7 @@
       "description": "Handles showLogoutForm operation in AuthController",
       "fileName": "AuthController_showLogoutForm.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.322Z"
+      "timestamp": "2026-05-23T15:44:29.822Z"
     },
     {
       "id": "ProfileController-edit",
@@ -573,7 +586,7 @@
       "description": "Updates an existing resource in ProfileController",
       "fileName": "ProfileController_edit.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.322Z"
+      "timestamp": "2026-05-23T15:44:29.822Z"
     },
     {
       "id": "ProfileController-update",
@@ -584,14 +597,14 @@
       "description": "Updates an existing resource in ProfileController",
       "fileName": "ProfileController_update.md",
       "models": [],
-      "timestamp": "2026-05-19T16:20:18.323Z"
+      "timestamp": "2026-05-23T15:44:29.823Z"
     }
   ],
   "statistics": {
-    "totalDiagrams": 50,
+    "totalDiagrams": 51,
     "byType": {
       "create": 7,
-      "generic": 25,
+      "generic": 26,
       "list": 4,
       "update": 9,
       "delete": 3,
@@ -601,7 +614,7 @@
       "AdminLogin": 4,
       "Category": 7,
       "Order": 5,
-      "Product": 10,
+      "Product": 11,
       "Settings": 2,
       "Cart": 7,
       "Checkout": 3,

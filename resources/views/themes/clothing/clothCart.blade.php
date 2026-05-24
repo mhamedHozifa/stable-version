@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Your Cart | Velvet & Moss Boutique</title>
-    
+    <link rel="stylesheet" href="{{ asset('css/themes/clothing/clothCart.css') }}">
     <!-- SINGLE CSS FILE (includes navbar + cart styles) -->
     <link rel="stylesheet" href="{{ asset('css/clothCart.css') }}">
     

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AuthController::reset - Sequence Diagram</title>
+  <title>ProductController::publicByCategory - Sequence Diagram</title>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,7 +13,7 @@
 <body>
   <header>
   [object Object], [object Object], [object Object]
-    <h1>AuthController::reset</h1>
+    <h1>ProductController::publicByCategory</h1>
     <h2>laravel/laravel (Laravel v12.53.0)</h2>
   </header>
   
@@ -37,17 +37,17 @@
   <main>
     <div class="diagram-details" style="background-color: var(--light-color); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-        <h3>AuthController::reset</h3>
+        <h3>ProductController::publicByCategory</h3>
         <span class="diagram-badge badge-generic">GENERIC</span>
       </div>
       
-      <p><strong>Description:</strong> Handles reset operation in AuthController</p>
+      <p><strong>Description:</strong> Handles publicByCategory operation in ProductController</p>
       
       <div style="margin-top: 1rem;">
-        <p><strong>Controller:</strong> Auth</p>
-        <p><strong>Method:</strong> reset</p>
+        <p><strong>Controller:</strong> Product</p>
+        <p><strong>Method:</strong> publicByCategory</p>
         <p><strong>Models:</strong> 
-          None specified
+          <span class="model-tag">Product</span>
         </p>
       </div>
     </div>
@@ -56,7 +56,7 @@
       <button class="btn btn-primary" id="print-btn">
         <i class="fas fa-print"></i> Print
       </button>
-      <button class="btn btn-info" id="export-btn" data-diagram="AuthController-reset">
+      <button class="btn btn-info" id="export-btn" data-diagram="ProductController-publicByCategory">
         <i class="fas fa-download"></i> Export as PNG
       </button>
       <button class="btn btn-secondary" id="copy-text">
@@ -88,25 +88,25 @@
     autonumber
     participant C as Client
     participant R as Route
-    participant AuthController as AuthController
-    participant Model as Model
+    participant ProductController as ProductController
+    participant Product as Product
     participant DB as Database
     
     C->>R: Request
-    R->>+AuthController: reset()
-    Note over AuthController: Process request
+    R->>+ProductController: publicByCategory()
+    Note over ProductController: Process request
     alt Uses database
-      AuthController->>+Model: operation()
-      Model->>+DB: Database query
-      DB-->>-Model: Return data
-      Model-->>-AuthController: Return result
+      ProductController->>+Product: operation()
+      Product->>+DB: Database query
+      DB-->>-Product: Return data
+      Product-->>-ProductController: Return result
     else Direct response
-      Note over AuthController: Process without database
+      Note over ProductController: Process without database
     end
-    AuthController-->>-R: Return response
+    ProductController-->>-R: Return response
     R-->>C: Response
     
-    Note over AuthController: Generic operation flow
+    Note over ProductController: Generic operation flow
   
       </div>
     </div>
@@ -118,25 +118,25 @@
     autonumber
     participant C as Client
     participant R as Route
-    participant AuthController as AuthController
-    participant Model as Model
+    participant ProductController as ProductController
+    participant Product as Product
     participant DB as Database
     
     C-&gt;&gt;R: Request
-    R-&gt;&gt;+AuthController: reset()
-    Note over AuthController: Process request
+    R-&gt;&gt;+ProductController: publicByCategory()
+    Note over ProductController: Process request
     alt Uses database
-      AuthController-&gt;&gt;+Model: operation()
-      Model-&gt;&gt;+DB: Database query
-      DB--&gt;&gt;-Model: Return data
-      Model--&gt;&gt;-AuthController: Return result
+      ProductController-&gt;&gt;+Product: operation()
+      Product-&gt;&gt;+DB: Database query
+      DB--&gt;&gt;-Product: Return data
+      Product--&gt;&gt;-ProductController: Return result
     else Direct response
-      Note over AuthController: Process without database
+      Note over ProductController: Process without database
     end
-    AuthController--&gt;&gt;-R: Return response
+    ProductController--&gt;&gt;-R: Return response
     R--&gt;&gt;C: Response
     
-    Note over AuthController: Generic operation flow
+    Note over ProductController: Generic operation flow
   </pre>
     </div>
   </main>

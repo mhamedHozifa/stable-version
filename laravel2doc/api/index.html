@@ -334,7 +334,7 @@
 
 <p>Laravel Version: v12.53.0</p>
 
-<p>Generated: ١٩‏/٥‏/٢٠٢٦، ٧:٢٠:١٨ م</p>
+<p>Generated: ٢٣‏/٥‏/٢٠٢٦، ٦:٤٤:٢٩ م</p>
 
 <h2 id="Table of Contents">Table of Contents</h2>
 
@@ -380,6 +380,7 @@
 <p>| GET | /profile | ProfileController::class, 'edit' | List profile |</p>
 <p>| PATCH | /profile | ProfileController::class, 'update' | Update a specific profile |</p>
 <p>| GET | /products | ProductController::class, 'publicIndex' | List products |</p>
+<p>| GET | /categories/{category}/products | ProductController::class, 'publicByCategory' | Retrieve a specific products |</p>
 <p>| GET | /products/{product} | ProductController::class, 'publicShow' | Retrieve a specific {product} |</p>
 <p>| POST | /cart/add/{product} | CartController::class, 'add' | Create a new {product} |</p>
 <p>| GET | /cart | CartController::class, 'index' | List cart |</p>
@@ -612,6 +613,14 @@
 <p><strong>Handler:</strong> ProductController::class, 'publicIndex'</p>
 
 <p><strong>Description:</strong> List products</p>
+
+<hr>
+
+<p>### GET /categories/{category}/products</p>
+
+<p><strong>Handler:</strong> ProductController::class, 'publicByCategory'</p>
+
+<p><strong>Description:</strong> Retrieve a specific products</p>
 
 <hr>
 

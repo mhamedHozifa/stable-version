@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Setting;
+use App\Services\ThemeResolver;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(\App\Services\Cart::class);
+        $this->app->singleton(ThemeResolver::class, function () {
+            return new ThemeResolver();
+        });
     }
 
     /**
@@ -23,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share the current site type with all views.
         View::share('siteType', Setting::get('site_type', 'clothing'));
+        View::share('themeResolver', app(ThemeResolver::class));
     }
 }

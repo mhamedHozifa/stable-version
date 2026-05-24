@@ -119,11 +119,15 @@ class CheckoutController extends Controller
             }
         }
 
-        return view('checkout.success');
+        $themePage = 'checkout';
+
+        return view('checkout.success', compact('themePage'));
     }
 
     public function cancel()
     {
-        return view('checkout.cancel');
+        $themePage = 'checkout';
+
+        return view('checkout.cancel', compact('themePage'));
     }
 }

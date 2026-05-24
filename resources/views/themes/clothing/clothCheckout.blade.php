@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Velvet & Moss Boutique – Secure Checkout</title>
+     clothCheckout.blade.php
 
+    <link rel="stylesheet" href="{{ asset('css/themes/clothing/clothCheckout.css') }}">
     <!-- Base Styles (reusing cloth.css for global & navbar styling) -->
     <link rel="stylesheet" href="{{ asset('css/cloth.css') }}">
     <!-- Additional checkout-specific styles (to be provided next) -->

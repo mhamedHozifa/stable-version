@@ -4,7 +4,7 @@
 
 Laravel Version: v12.53.0
 
-Generated: ١٩‏/٥‏/٢٠٢٦، ٧:٢٠:١٨ م
+Generated: ٢٣‏/٥‏/٢٠٢٦، ٦:٤٤:٢٩ م
 
 ## Table of Contents
 
@@ -47,6 +47,7 @@ Generated: ١٩‏/٥‏/٢٠٢٦، ٧:٢٠:١٨ م
 | GET | /profile | ProfileController::class, 'edit' | List profile |
 | PATCH | /profile | ProfileController::class, 'update' | Update a specific profile |
 | GET | /products | ProductController::class, 'publicIndex' | List products |
+| GET | /categories/{category}/products | ProductController::class, 'publicByCategory' | Retrieve a specific products |
 | GET | /products/{product} | ProductController::class, 'publicShow' | Retrieve a specific {product} |
 | POST | /cart/add/{product} | CartController::class, 'add' | Create a new {product} |
 | GET | /cart | CartController::class, 'index' | List cart |
@@ -279,6 +280,14 @@ Generated: ١٩‏/٥‏/٢٠٢٦، ٧:٢٠:١٨ م
 **Handler:** ProductController::class, 'publicIndex'
 
 **Description:** List products
+
+---
+
+### GET /categories/{category}/products
+
+**Handler:** ProductController::class, 'publicByCategory'
+
+**Description:** Retrieve a specific products
 
 ---
 
