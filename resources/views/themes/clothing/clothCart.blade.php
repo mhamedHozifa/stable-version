@@ -80,7 +80,7 @@
                     </div>
                     <div class="cart-item-price">$331.92</div>
                     <div class="cart-item-qty">
-                        <input type="number" class="cart-qty-input" value="1" min="1" step="1">
+                        <input type="number" class="quantity-input" value="1" min="1" step="1">
                         <button class="btn-update-qty">Update</button>
                     </div>
                     <div class="cart-item-subtotal">$331.92</div>

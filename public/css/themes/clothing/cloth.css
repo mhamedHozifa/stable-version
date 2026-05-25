@@ -197,7 +197,9 @@ body {
     font-size: 0.85rem;
 }
 
-.add-btn {
+.add-btn,
+.form.add-to-cart-form button,
+.add-to-cart-form button {
     background-color: #c5a47e;
     color: #fff;
     border: none;
@@ -209,7 +211,9 @@ body {
     transition: background 0.2s;
 }
 
-.add-btn:hover {
+.add-btn:hover,
+.form.add-to-cart-form button:hover,
+.add-to-cart-form button:hover {
     background-color: #b08b62;
 }
 

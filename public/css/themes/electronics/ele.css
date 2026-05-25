@@ -196,7 +196,9 @@ body {
     box-shadow: 0 0 0 2px rgba(30, 58, 107, 0.2);
 }
 
-.btn-add-to-cart {
+.btn-add-to-cart,
+.add-to-cart-form button,
+.form.add-to-cart-form button {
     background: #0a1c2f;   /* dark blue */
     border: none;
     border-radius: 40px;

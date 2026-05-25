@@ -324,6 +324,116 @@
     }
 }
 
+/* Aliases for Blade class names (non-destructive)
+   Provide lightweight mappings so Blade markup and theme CSS align.
+   Keep theme classes as primary source; mirror key selectors used in Blade. */
+.cart-container {
+    /* alias for .cart-wrapper */
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(10, 28, 47, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.quantity-input,
+.quantity-input:focus {
+    /* alias to .cart-item-quantity .qty-input */
+    width: 75px;
+    padding: 0.45rem 0.3rem;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: white;
+    font-size: 0.9rem;
+}
+
+.update-btn {
+    /* alias to .btn-update */
+    color: #1e3a6b;
+    background: #eef2fa;
+    cursor: pointer;
+}
+
+.remove-btn {
+    /* alias to .btn-remove */
+    color: #b91c1c;
+    background: #fee2e2;
+    cursor: pointer;
+}
+
+/* table fallback for Blade's table-based cart markup */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.cart-table th,
+.cart-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.cart-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cart-total {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: #0a1c2f;
+}
+
+.continue-shopping-btn,
+.clear-cart-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.2rem;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid #dbe7f5;
+    color: #0a1c2f;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+.continue-shopping-btn:hover,
+.clear-cart-btn:hover {
+    background: #eef4fb;
+}
+
+.checkout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    color: #fff;
+    background: #0a1c2f;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.checkout-btn:hover {
+    background: #153e6b;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-image {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
 @media (max-width: 550px) {
     .cart-wrapper {
         padding: 1rem;
