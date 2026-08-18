@@ -5,7 +5,9 @@
 @section('content')
     <div class="container">
         <h1>Manage Products</h1>
-        <button class="btn btn-primary" onclick="openModal('create')">Add New Product</button>
+        <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
+            <button class="btn btn-primary" onclick="openModal('create')">Add New Product</button>
+        </div>
 
         <table class="table">
             <thead>

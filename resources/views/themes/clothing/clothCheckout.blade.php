@@ -98,17 +98,6 @@
                                 <input type="text" id="city" name="city" placeholder="New York" required>
                             </div>
                             <div class="form-group half">
-                                <label for="state">State</label>
-                                <input type="text" id="state" name="state" placeholder="NY" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <label for="zip">Zip / Postal code</label>
-                                <input type="text" id="zip" name="zip" placeholder="10001" required>
-                            </div>
-                            <div class="form-group half">
                                 <label for="country">Country</label>
                                 <select id="country" name="country" required>
                                     <option value="" disabled selected>Select country</option>

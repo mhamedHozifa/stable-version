@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -15,9 +16,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $products = Product::paginate(10); // جلب المنتجات
-       $categories = Category::all(); // جلب كل التصنيفات للمودال    
-        return view('admin.products.index', compact('products','categories'));
+        $siteType = Setting::get('site_type', 'clothing');
+
+        $products = Product::whereHas('category', function ($query) use ($siteType) {
+            $query->where('site_type', $siteType);
+        })->paginate(10);
+
+        // Fetch categories for the modal (always filtered by current site type)
+        $categories = Category::where('site_type', $siteType)->get();
+
+        return view('admin.products.index', compact('products', 'categories', 'siteType'));
     }
 
     /**
@@ -141,8 +149,13 @@ public function update(Request $request, Product $product)
 
     public function publicIndex()
     {
+        $siteType = Setting::get('site_type', 'clothing');
+        
         $products = Product::query()
-            ->select(['id', 'name', 'price', 'image', 'description', 'created_at'])
+            ->select(['id', 'name', 'price', 'image', 'description', 'created_at', 'category_id'])
+            ->whereHas('category', function($q) use ($siteType) {
+                $q->where('site_type', $siteType);
+            })
             ->latest()
             ->paginate(12);
 
@@ -153,6 +166,13 @@ public function update(Request $request, Product $product)
 
     public function publicByCategory(Category $category)
     {
+        $siteType = Setting::get('site_type', 'clothing');
+        
+        // Ensure the category's site_type matches the global setting
+        if ($category->site_type !== $siteType) {
+            abort(404);
+        }
+        
         $products = Product::query()
             ->where('category_id', $category->id)
             ->select(['id', 'name', 'price', 'image', 'description', 'created_at'])

@@ -12,7 +12,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount('products')->get();
+        $siteType = Setting::get('site_type', 'clothing');
+        $categories = Category::where('site_type', $siteType)->withCount('products')->get();
         return view('admin.categories.index', compact('categories'));
     }
 

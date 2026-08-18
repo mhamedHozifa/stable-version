@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'value' => 'clothing',
         ]);
 
-       $this->call(ProductSeeder::class);
+       $this->call(ClothingProductsSeeder::class);
        $this->call(OrderSeeder::class);
     }
 }

@@ -1,4 +1,42 @@
-/* --- Global Reset & Font --- */
+/* ---------------------------------------------
+   Store Front – Warm Cream Theme
+   Cleaned-up, de-duplicated version
+   Includes navbar, product grid, cards,
+   pagination, responsive design
+--------------------------------------------- */
+
+/* -------------------------------
+   CSS Custom Properties (Theme)
+-------------------------------- */
+:root {
+    --clr-body-bg: #fcf9f1;
+    --clr-card-bg: #fffefc;
+    --clr-card-bg-hover: #fffef9;
+    --clr-dropdown-hover: #f5efe4;
+    --clr-btn-hover-light: #eae3d4;
+    --clr-text-primary: #2c241a;
+    --clr-text-secondary: #4a3b2b;
+    --clr-text-muted: #333;
+    --clr-accent: #c5a47e;
+    --clr-accent-hover: #b08b62;
+    --clr-accent-badge: #a58156;
+    --clr-border-light: #eae3d4;
+    --clr-border-medium: #e5dcca;
+    --clr-border-input: #d4cbbc;
+    --clr-white: #fff;
+    --radius-card: 16px;
+    --radius-sm: 8px;
+    --radius-xs: 4px;
+    --radius-round: 50%;
+    --font-family: 'Inter', sans-serif;
+    --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.02);
+    --max-width: 1400px;
+}
+
+/* -------------------------------
+   Global Reset & Font
+-------------------------------- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,30 +44,32 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #fcf9f1; /* Light warm cream */
-    color: #333;
+    font-family: var(--font-family);
+    background-color: var(--clr-body-bg);
+    color: var(--clr-text-muted);
 }
 
-/* --- Navbar --- */
+/* -------------------------------
+   Navbar
+-------------------------------- */
 .navbar {
-    background-color: #fcf9f1;
+    background-color: var(--clr-body-bg);
     padding: 20px 40px;
-    border-bottom: 1px solid #eae3d4;
+    border-bottom: 1px solid var(--clr-border-light);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
 .brand-logo {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
 }
 
 .nav-center {
@@ -40,7 +80,7 @@ body {
     position: relative;
     cursor: pointer;
     font-size: 0.95rem;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     display: flex;
     align-items: center;
 }
@@ -61,12 +101,12 @@ body {
     position: absolute;
     top: 30px;
     left: -20px;
-    background: #fffef9;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    border-radius: 8px;
+    background: var(--clr-card-bg-hover);
+    box-shadow: var(--shadow-dropdown);
+    border-radius: var(--radius-sm);
     padding: 10px 0;
     min-width: 200px;
-    border: 1px solid #eae3d4;
+    border: 1px solid var(--clr-border-light);
     z-index: 10;
 }
 
@@ -80,13 +120,13 @@ body {
     gap: 12px;
     padding: 10px 20px;
     text-decoration: none;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     font-size: 0.9rem;
     transition: background 0.2s;
 }
 
 .dropdown-item:hover {
-    background-color: #f5efe4;
+    background-color: var(--clr-dropdown-hover);
 }
 
 .nav-right {
@@ -97,7 +137,7 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     font-size: 0.95rem;
     display: flex;
     align-items: center;
@@ -109,38 +149,42 @@ body {
 }
 
 .cart-badge {
-    background-color: #a58156;
-    color: white;
-    border-radius: 50%;
+    background-color: var(--clr-accent-badge);
+    color: var(--clr-white);
+    border-radius: var(--radius-round);
     padding: 1px 6px;
     font-size: 0.75rem;
     font-weight: 600;
     margin-left: 4px;
 }
 
-/* --- Hero Section --- */
+/* -------------------------------
+   Hero Section
+-------------------------------- */
 .hero-section {
     text-align: center;
     padding: 40px 20px 20px;
-    background-color: #fcf9f1;
+    background-color: var(--clr-body-bg);
 }
 
 .hero-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #2c241a;
+    color: var(--clr-text-primary);
     margin-bottom: 8px;
 }
 
 .hero-subtitle {
     font-size: 1.1rem;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
 }
 
-/* --- Product Grid --- */
+/* -------------------------------
+   Product Grid Wrapper
+-------------------------------- */
 .product-grid-wrapper {
     padding: 20px 40px 40px;
-    max-width: 1400px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
@@ -150,100 +194,120 @@ body {
     gap: 25px;
 }
 
-/* --- Product Card --- */
+/* -------------------------------
+   Product Card [تعديلات مهمة هنا]
+-------------------------------- */
 .product-card {
-    background-color: #fffefc;
-    border: 1px solid #e5dcca;
-    border-radius: 16px;
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border-medium);
+    border-radius: var(--radius-card);
     padding: 20px;
     display: flex;
+    align-items: stretch; /* تعديل: الصورة ستأخذ طول البطاقة بالكامل */
     justify-content: space-between;
-    align-items: flex-start;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    box-shadow: var(--shadow-card);
     position: relative;
+    gap: 15px; /* تعديل: مسافة افضل بين الصورة والمعلومات */
 }
 
 .card-info {
     flex: 1;
-    padding-right: 10px;
+    display: flex; /* تعديل: لتحويل القسم الى عمود مرن */
+    flex-direction: column; /* تعديل: للسماح بتحريك العناصر للأسفل */
 }
 
 .product-name {
     font-size: 1rem;
     font-weight: 600;
-    color: #2c241a;
+    color: var(--clr-text-primary);
     margin-bottom: 4px;
 }
 
 .product-price {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #2c241a;
+    color: var(--clr-text-primary);
     margin-bottom: 12px;
 }
 
+/* --- Actions area (qty + add button) --- */
 .card-actions {
+    margin-top: auto; /* تعديل: يدفع الزر والكمية دائماً إلى الأسفل */
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 6px;
 }
 
 .qty-input {
     width: 40px;
     padding: 4px 2px;
-    border: 1px solid #d4cbbc;
-    border-radius: 4px;
+    border: 1px solid var(--clr-border-input);
+    border-radius: var(--radius-xs);
     text-align: center;
     font-size: 0.85rem;
 }
 
+/* Add to cart button – now full width below quantity */
 .add-btn,
 .form.add-to-cart-form button,
 .add-to-cart-form button {
-    background-color: #c5a47e;
-    color: #fff;
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
     border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.75rem;
+    
+    padding: 6px 10px; /* تعديل: جعل الزر اصغر */
+
+    border-radius: var(--radius-xs);
+    font-size: 0.7rem;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
+    width: 130%;
+    margin-top: 6px;
+    display: block;
+    text-align: center;
 }
 
 .add-btn:hover,
 .form.add-to-cart-form button:hover,
 .add-to-cart-form button:hover {
-    background-color: #b08b62;
+    background-color: var(--clr-accent-hover);
 }
 
-/* --- Product Image Placeholder Styling --- */
+/* -------------------------------
+   Product Image Placeholder [تعديلات مهمة هنا]
+-------------------------------- */
 .card-image {
-    width: 100px;
-    height: 140px;
+    width: 120px;          /* تعديل: عرض اوسع قليلاً */
+    height: auto;          /* تعديل: الارتفاع يتناسب تلقائياً مع البطاقة */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;      /* تعديل: لمنع الصورة من الخروج عن الحواف */
+    border-radius: var(--radius-xs);
 }
 
 .product-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 4px;
+    width: 100%;           /* تعديل: ملء عرض الحاوية */
+    height: 100%;          /* تعديل: ملء ارتفاع الحاوية */
+    object-fit: cover;     /* تعديل: تملأ الصورة الفراغ بالكامل دون تقطيع مزعج */
+    border-radius: inherit;
+    object-position: center top;
 }
 
-/* --- Pagination --- */
+/* -------------------------------
+   Pagination
+-------------------------------- */
 .pagination-wrapper {
     padding: 10px 40px 60px;
     text-align: center;
-    max-width: 1400px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
 .results-text {
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     font-size: 0.9rem;
     margin-bottom: 12px;
 }
@@ -254,7 +318,7 @@ body {
 
 .pagination-link {
     text-decoration: none;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     font-size: 0.9rem;
     margin: 0 8px;
 }
@@ -269,22 +333,22 @@ body {
 .page-btn {
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: var(--radius-round);
     border: none;
     background: transparent;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     font-weight: 500;
     cursor: pointer;
     font-size: 0.9rem;
 }
 
 .page-btn.active {
-    background-color: #c5a47e;
-    color: #fff;
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
 }
 
 .page-btn:hover:not(.active) {
-    background-color: #eae3d4;
+    background-color: var(--clr-btn-hover-light);
 }
 
 .arrow-btn {
@@ -292,7 +356,9 @@ body {
     font-weight: bold;
 }
 
-/* --- Responsive Design (For smaller screens) --- */
+/* -------------------------------
+   Responsive Design
+-------------------------------- */
 @media (max-width: 1100px) {
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -323,7 +389,7 @@ body {
         font-size: 1rem;
     }
     .card-image {
-        width: 80px;
-        height: 110px;
+        width: 90px;
+        height: auto; /* تعديل: يحافظ على المرونة في الشاشات الصغيرة */
     }
 }

@@ -1,11 +1,49 @@
 /* --- checkout.css --- */
-/* Extends cloth.css with checkout-specific styles */
+/* Extends theme with checkout-specific styles */
 
-/* Checkout Layout */
+/* -------------------------------
+   CSS Custom Properties (Theme)
+-------------------------------- */
+:root {
+    --clr-body-bg: #fcf9f1;
+    --clr-card-bg: #fffefc;
+    --clr-card-bg-hover: #fcfcfc;
+    --clr-dropdown-hover: #f5efe4;
+    --clr-btn-hover-light: #eae3d4;
+    --clr-text-primary: #2c241a;
+    --clr-text-secondary: #4a3b2b;
+    --clr-text-muted: #333;
+    --clr-accent: #c5a47e;
+    --clr-accent-hover: #b08b62;
+    --clr-border-light: #eae3d4;
+    --clr-border-medium: #e5dcca;
+    --clr-border-input: #d4cbbc;
+    --clr-white: #fff;
+    --radius-card: 16px;
+    --radius-sm: 8px;
+    --radius-xs: 6px;
+    --radius-round: 50%;
+    --font-family: 'Inter', sans-serif;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.03);
+    --max-width: 1400px;
+}
+
+/* -------------------------------
+   Global Reset & Font for Checkout
+-------------------------------- */
+body {
+    font-family: var(--font-family);
+    background-color: var(--clr-body-bg); /* توحيد الخلفية مع المتجر */
+    color: var(--clr-text-muted);
+}
+
+/* -------------------------------
+   Checkout Layout
+-------------------------------- */
 .checkout-wrapper {
-    max-width: 1400px;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 20px 40px 60px;
+    padding: 30px 40px 60px;
 }
 
 .checkout-grid {
@@ -14,141 +52,197 @@
     gap: 40px;
 }
 
-/* Cards (billing & summary) */
+/* -------------------------------
+   Cards (Billing & Summary)
+-------------------------------- */
 .billing-card,
-.summary-card {
-    background-color: #fffefc;
-    border: 1px solid #e5dcca;
-    border-radius: 20px;
+.summary-card,
+.card {
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border-medium);
+    border-radius: var(--radius-card); /* 16px لتطابق بطاقات المنتجات */
     padding: 28px 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    box-shadow: var(--shadow-card);
     transition: box-shadow 0.2s ease;
 }
 
 .billing-card:hover,
-.summary-card:hover {
+.summary-card:hover,
+.card:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-.checkout-section-title {
+/* -------------------------------
+   Titles
+-------------------------------- */
+.checkout-section-title,
+.card-header {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2c241a;
+    color: var(--clr-text-primary);
     margin-bottom: 24px;
-    border-left: 4px solid #c5a47e;
+    border-left: 4px solid var(--clr-accent);
     padding-left: 14px;
 }
+.card-header {
+    border-bottom: 1px solid var(--clr-border-light);
+    padding-bottom: 10px;
+}
+.card-body {
+    padding-top: 16px;
+}
 
-/* Billing Form */
+/* -------------------------------
+   Billing Form
+-------------------------------- */
 .billing-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .billing-form label {
     display: block;
     font-size: 0.85rem;
     font-weight: 500;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
     margin-bottom: 6px;
-    letter-spacing: 0.3px;
 }
 
+/* Inputs & Selects */
 .billing-form input,
-.billing-form select {
+.billing-form select,
+.form-control {
     width: 100%;
     padding: 12px 14px;
-    background-color: #ffffff;
-    border: 1px solid #e0d6c6;
-    border-radius: 12px;
-    font-family: 'Inter', sans-serif;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border-input);
+    border-radius: var(--radius-sm); /* 8px مثل أزرار الإضافة */
+    font-family: var(--font-family);
     font-size: 0.95rem;
-    color: #2c241a;
-    transition: all 0.2s;
+    color: var(--clr-text-primary);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .billing-form input:focus,
-.billing-form select:focus {
+.billing-form select:focus,
+.form-control:focus {
     outline: none;
-    border-color: #c5a47e;
+    border-color: var(--clr-accent);
     box-shadow: 0 0 0 3px rgba(197, 164, 126, 0.2);
 }
 
 .billing-form input::placeholder {
     color: #b6a88e;
-    font-weight: 400;
 }
 
 /* Two-column row */
 .form-row {
     display: flex;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
-
 .form-group.half {
     flex: 1;
     margin-bottom: 0;
 }
 
-/* Pay Now Button (ادفع الآن) */
-.pay-now-btn {
-    background-color: #c5a47e;
-    color: white;
+/* -------------------------------
+   Buttons (Pay Now & Aliases)
+-------------------------------- */
+.pay-now-btn,
+.btn,
+.btn-primary,
+.btn-block {
+    display: inline-block;
+    background-color: var(--clr-accent);
+    color: var(--clr-white);
     border: none;
     padding: 14px 20px;
     width: 100%;
     font-size: 1rem;
     font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    border-radius: 40px;
+    font-family: var(--font-family);
+    border-radius: var(--radius-sm); /* 8px لتطابق الأزرار السابقة */
     cursor: pointer;
-    transition: all 0.2s ease;
+    text-align: center;
+    transition: background 0.2s, transform 0.1s;
     margin-top: 12px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.pay-now-btn:hover {
-    background-color: #b08b62;
+.pay-now-btn:hover,
+.btn:hover,
+.btn-primary:hover {
+    background-color: var(--clr-accent-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(160, 120, 80, 0.15);
 }
 
-/* Order Summary Table */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--clr-text-primary);
+    border: 1px solid var(--clr-border-input);
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+    background: var(--clr-btn-hover-light);
+}
+
+/* -------------------------------
+   Order Summary Table
+-------------------------------- */
 .order-summary-table-wrapper {
     overflow-x: auto;
     margin-bottom: 20px;
 }
 
-.summary-table {
+.summary-table,
+.table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
 }
 
-.summary-table th {
+.summary-table th,
+.table th {
     text-align: left;
     padding: 12px 4px 12px 0;
     font-weight: 600;
-    color: #4a3b2b;
-    border-bottom: 1px solid #e5dcca;
+    color: var(--clr-text-secondary);
+    border-bottom: 1px solid var(--clr-border-light);
 }
 
-.summary-table td {
+.summary-table td,
+.table td {
     padding: 14px 4px 14px 0;
     border-bottom: 1px solid #f0ebdf;
-    color: #2c241a;
+    color: var(--clr-text-primary);
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f5ed;
+}
+.table th,
+.table td {
+    padding: 12px 14px;
+    border: 1px solid var(--clr-border-light);
 }
 
 .summary-table .product-name-cell {
     font-weight: 500;
 }
 
-/* Totals rows */
+/* -------------------------------
+   Totals Rows (Summary Table)
+-------------------------------- */
 .summary-table tfoot tr {
     border-bottom: none;
 }
-
 .summary-table .subtotal-row td,
 .summary-table .shipping-row td,
 .summary-table .grandtotal-row td {
@@ -156,50 +250,79 @@
     padding-top: 12px;
     padding-bottom: 8px;
 }
-
 .summary-table .total-label {
     font-weight: 500;
-    color: #4a3b2b;
+    color: var(--clr-text-secondary);
 }
-
 .summary-table .grandtotal-label {
     font-weight: 700;
     font-size: 1rem;
-    color: #2c241a;
+    color: var(--clr-text-primary);
 }
-
 .summary-table .total-amount {
     font-weight: 600;
     text-align: right;
     padding-right: 8px;
 }
-
 .summary-table .grandtotal-amount {
     font-weight: 800;
     font-size: 1.1rem;
-    color: #2c241a;
+    color: var(--clr-text-primary);
 }
-
 .summary-note {
     font-size: 0.75rem;
     color: #9b8e7c;
     margin-top: 16px;
     text-align: center;
-    border-top: 1px dashed #e5dcca;
+    border-top: 1px dashed var(--clr-border-light);
     padding-top: 14px;
 }
 
-/* Responsive for checkout */
+/* -------------------------------
+   Bootstrap-like Aliases
+-------------------------------- */
+.table-responsive {
+    overflow-x: auto;
+}
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.mb-3 { margin-bottom: 1rem; }
+.text-success { color: #0f766e; }
+.text-warning { color: #b45309; }
+
+.alert-danger {
+    background: #fde8e8;
+    color: #981b1b;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75rem;
+}
+.col-md-8 {
+    width: 100%;
+    padding: 0 0.75rem;
+}
+.justify-content-center { justify-content: center; }
+@media (min-width: 768px) {
+    .col-md-8 { width: 66.6666%; }
+}
+
+/* -------------------------------
+   Responsive Design
+-------------------------------- */
 @media (max-width: 950px) {
     .checkout-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-
     .checkout-wrapper {
         padding: 20px 20px 50px;
     }
-
     .billing-card,
     .summary-card {
         padding: 20px 24px;
@@ -211,125 +334,15 @@
         flex-direction: column;
         gap: 20px;
     }
-
     .form-group.half {
         width: 100%;
     }
-
     .checkout-section-title {
         font-size: 1.3rem;
     }
-
     .summary-table th,
     .summary-table td {
         font-size: 0.8rem;
         padding-right: 8px;
     }
 }
-
-/* Aliases so Blade markup uses familiar Bootstrap-like classes while keeping theme styles
-   - Map `.card`, `.card-header`, `.card-body`, `.form-control`, and `.btn` to theme equivalents */
-.card {
-    background-color: #fffefc;
-    border: 1px solid #e5dcca;
-    border-radius: 20px;
-    padding: 28px 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-}
-.card:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04); }
-.card-header { font-weight: 600; padding-bottom: 8px; border-bottom: 1px solid #e5dcca; }
-.card-body { padding-top: 12px; }
-
-.form-control {
-    width: 100%;
-    padding: 12px 14px;
-    background-color: #ffffff;
-    border: 1px solid #e0d6c6;
-    border-radius: 12px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: #2c241a;
-    transition: all 0.2s;
-}
-.form-control:focus { outline: none; border-color: #c5a47e; box-shadow: 0 0 0 3px rgba(197,164,126,0.2); }
-
-/* Map generic button classes to theme's pay-now style */
-.btn, .btn-primary, .btn-block {
-    display: inline-block;
-    background-color: #c5a47e;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 40px;
-    cursor: pointer;
-    text-align: center;
-}
-.btn:hover, .btn-primary:hover { background-color: #b08b62; }
-.btn-block { width: 100%; display: block; }
-
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    color: #2c241a;
-    border: 1px solid #d4cbbc;
-    padding: 12px 18px;
-    border-radius: 40px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-.btn-secondary:hover {
-    background: #f4efe6;
-}
-
-.table-responsive {
-    overflow-x: auto;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-}
-
-.table-striped tbody tr:nth-child(odd) {
-    background-color: #f9f5ed;
-}
-
-.table th,
-.table td {
-    padding: 12px 14px;
-    border: 1px solid #e5dcca;
-}
-
-.text-right { text-align: right; }
-.text-center { text-align: center; }
-.mb-3 { margin-bottom: 1rem; }
-.alert-danger {
-    background: #fde8e8;
-    color: #981b1b;
-    padding: 1rem;
-    border-radius: 0.75rem;
-    margin-bottom: 1rem;
-}
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -0.75rem;
-}
-.col-md-8 {
-    width: 100%;
-    padding: 0 0.75rem;
-}
-.justify-content-center { justify-content: center; }
-
-@media (min-width: 768px) {
-    .col-md-8 { width: 66.6666%; }
-}
-
-.text-success { color: #0f766e; }
-.text-warning { color: #b45309; }

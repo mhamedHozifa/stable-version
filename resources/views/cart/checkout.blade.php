@@ -82,22 +82,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state">State</label>
-                            <input type="text" name="state" id="state" class="form-control" required value="{{ old('state') }}">
-                            @error('state')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="zip">Zip</label>
-                            <input type="text" name="zip" id="zip" class="form-control" required value="{{ old('zip') }}">
-                            @error('zip')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
                             <label for="country">Country</label>
                             <input type="text" name="country" id="country" class="form-control" required value="{{ old('country') }}" maxlength="2">
                             @error('country')

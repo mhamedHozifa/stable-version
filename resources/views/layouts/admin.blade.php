@@ -7,11 +7,13 @@
     <title>@yield('title', 'Admin Panel')</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin-products.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
     <div class="admin-wrapper">
+        <input type="checkbox" id="admin-sidebar-toggle" class="admin-sidebar-toggle" hidden>
+        <label for="admin-sidebar-toggle" class="admin-sidebar-toggle-label" aria-label="Toggle sidebar">☰</label>
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -22,7 +24,7 @@
                 <li><a href="{{ route('products.index') }}" class="{{ request()->routeIs('products.*') ? 'active' : '' }}">Products</a></li>
                 <li><a href="/admin/categories">Categories</a></li>
                 <li><a href="/admin/orders">Orders</a></li>
-                <li><a href="/admin/customers">Customers</a></li>
+                
                 <li><a href="/admin/settings">Settings</a></li>
             </ul>
         </aside>

@@ -6,9 +6,7 @@
 <div class="container">
     <h1>Site Settings</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+   
 
     <form method="POST" action="{{ route('admin.settings.update') }}" class="settings-form">
         @csrf

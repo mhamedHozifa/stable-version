@@ -1,11 +1,41 @@
 /* ---------------------------------------------
    electronics store – complete styling
    DARK BLUE & LIGHT WHITE THEME
+   Cleaned-up, de-duplicated version
    includes transparent header, product grid,
    pagination, responsive design
 --------------------------------------------- */
 
-/* reset & base */
+/* -------------------------------
+   CSS Custom Properties (Theme)
+-------------------------------- */
+:root {
+    --clr-primary-dark: #0a1c2f;
+    --clr-primary-accent: #1e3a6b;
+    --clr-primary-hover: #153e6b;
+    --clr-body-bg: #f0f4f8;
+    --clr-white: #ffffff;
+    --clr-border-light: #e2e8f0;
+    --clr-border-medium: #cbd5e1;
+    --clr-bg-subtle: #eef2fa;
+    --clr-text-dark: #0a1c2f;
+    --clr-text-muted: #2c3e5c;
+    --clr-text-light: #eef2ff;
+    --clr-accent-blue: #7aa2f7;
+    --clr-icon-dark: #1e3a6b;
+    --radius-card: 1.5rem;
+    --radius-lg: 1rem;
+    --radius-pill: 40px;
+    --radius-sm: 12px;
+    --radius-xs: 0.5rem;
+    --shadow-card: 0 8px 20px rgba(10, 28, 47, 0.08);
+    --shadow-card-hover: 0 20px 30px -12px rgba(10, 28, 47, 0.2);
+    --font-family: 'Inter', sans-serif;
+}
+
+/* -------------------------------
+   Reset & Base
+-------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -13,13 +43,15 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: #f0f4f8;  /* light white-blue background */
-    color: #0a1c2f;       /* deep dark blue for text */
+    font-family: var(--font-family);
+    background: var(--clr-body-bg);  /* light white-blue background */
+    color: var(--clr-text-dark);     /* deep dark blue for text */
     line-height: 1.5;
 }
 
-/* ---------- TRANSPARENT HEADER (dark blue tones) ---------- */
+/* -------------------------------
+   Transparent Header
+-------------------------------- */
 .transparent-header {
     position: sticky;
     top: 0;
@@ -63,18 +95,18 @@ body {
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    color: #eef2ff;        /* light white */
+    color: var(--clr-text-light);
     transition: color 0.2s;
 }
 
 .main-nav a:hover {
-    color: #7aa2f7;        /* soft blue accent */
+    color: var(--clr-accent-blue);
 }
 
 .header-actions {
     display: flex;
     gap: 1.2rem;
-    color: #eef2ff;
+    color: var(--clr-text-light);
     font-size: 1.2rem;
 }
 
@@ -84,17 +116,18 @@ body {
 }
 
 .header-actions i:hover {
-    color: #ffffff;
+    color: var(--clr-white);
 }
 
-/* main container */
+/* -------------------------------
+   Main Container & Hero
+-------------------------------- */
 .container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 1.5rem 2rem 3rem;
 }
 
-/* hero section: "Our Products" + description */
 .hero-section {
     text-align: center;
     margin: 2rem 0 2.5rem;
@@ -103,19 +136,21 @@ body {
 .hero-title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0a1c2f;       /* dark blue */
+    color: var(--clr-text-dark);
     margin-bottom: 0.75rem;
     letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
     font-size: 1.1rem;
-    color: #2c3e5c;       /* muted dark blue */
+    color: var(--clr-text-muted);
     max-width: 600px;
     margin: 0 auto;
 }
 
-/* product grid */
+/* -------------------------------
+   Product Grid & Cards
+-------------------------------- */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -124,25 +159,25 @@ body {
 }
 
 .product-card {
-    background: #ffffff;   /* pure white card */
-    border-radius: 1.5rem;
+    background: var(--clr-white);
+    border-radius: var(--radius-card);
     padding: 1.5rem 1rem;
-    box-shadow: 0 8px 20px rgba(10, 28, 47, 0.08);
+    box-shadow: var(--shadow-card);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--clr-border-light);
     display: flex;
     flex-direction: column;
 }
 
 .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 30px -12px rgba(10, 28, 47, 0.2);
+    box-shadow: var(--shadow-card-hover);
     border-color: #b9c8e8;
 }
 
 .product-media {
-    background: #eef2fa;   /* very light blue-white */
-    border-radius: 1rem;
+    background: var(--clr-bg-subtle);
+    border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +187,7 @@ body {
 
 .product-media i {
     font-size: 3rem;
-    color: #1e3a6b;        /* deep blue icon */
+    color: var(--clr-icon-dark);
 }
 
 .product-name {
@@ -160,14 +195,14 @@ body {
     font-size: 1.1rem;
     line-height: 1.4;
     margin-bottom: 0.5rem;
-    color: #0a1c2f;
+    color: var(--clr-text-dark);
     word-break: break-word;
 }
 
 .product-price {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #0a1c2f;
+    color: var(--clr-text-dark);
     margin: 0.5rem 0 1rem 0;
 }
 
@@ -179,29 +214,31 @@ body {
     margin-top: 0.25rem;
 }
 
+/* Quantity input */
 .qty-input {
     width: 62px;
     padding: 0.5rem 0.3rem;
     text-align: center;
     font-weight: 500;
     font-size: 0.9rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
+    border: 1px solid var(--clr-border-medium);
+    border-radius: var(--radius-sm);
     background: white;
 }
 
 .qty-input:focus {
     outline: none;
-    border-color: #1e3a6b;
+    border-color: var(--clr-primary-accent);
     box-shadow: 0 0 0 2px rgba(30, 58, 107, 0.2);
 }
 
+/* Add to cart button – unified selectors */
 .btn-add-to-cart,
 .add-to-cart-form button,
 .form.add-to-cart-form button {
-    background: #0a1c2f;   /* dark blue */
+    background: var(--clr-primary-dark);
     border: none;
-    border-radius: 40px;
+    border-radius: var(--radius-pill);
     padding: 0.5rem 1rem;
     font-weight: 500;
     font-size: 0.85rem;
@@ -211,22 +248,28 @@ body {
     gap: 0.5rem;
     cursor: pointer;
     transition: background 0.2s;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
 }
 
 .btn-add-to-cart i {
     font-size: 0.85rem;
 }
 
-.btn-add-to-cart:hover {
-    background: #153e6b;   /* lighter dark blue */
+.btn-add-to-cart:hover,
+.add-to-cart-form button:hover,
+.form.add-to-cart-form button:hover {
+    background: var(--clr-primary-hover);
 }
 
-.btn-add-to-cart:active {
+.btn-add-to-cart:active,
+.add-to-cart-form button:active,
+.form.add-to-cart-form button:active {
     transform: scale(0.97);
 }
 
-/* pagination */
+/* -------------------------------
+   Pagination
+-------------------------------- */
 .pagination-section {
     display: flex;
     justify-content: space-between;
@@ -235,12 +278,12 @@ body {
     gap: 1rem;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #cbd5e6;
+    border-top: 1px solid var(--clr-border-medium);
 }
 
 .results-info {
     font-size: 0.9rem;
-    color: #2c3e5c;
+    color: var(--clr-text-muted);
     font-weight: 500;
 }
 
@@ -257,32 +300,32 @@ body {
     justify-content: center;
     min-width: 2.2rem;
     padding: 0.4rem 0.7rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-xs);
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    color: #0a1c2f;
+    color: var(--clr-text-dark);
     background: white;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--clr-border-medium);
     transition: all 0.2s;
 }
 
 .pagination-link:hover {
-    background-color: #eef2fa;
-    border-color: #1e3a6b;
-    color: #0a1c2f;
+    background-color: var(--clr-bg-subtle);
+    border-color: var(--clr-primary-accent);
+    color: var(--clr-text-dark);
 }
 
 .pagination-link.active {
-    background-color: #0a1c2f;
-    border-color: #0a1c2f;
+    background-color: var(--clr-primary-dark);
+    border-color: var(--clr-primary-dark);
     color: white;
     pointer-events: none;
 }
 
 .pagination-link.prev-next {
     font-weight: 600;
-    color: #0a1c2f;
+    color: var(--clr-text-dark);
 }
 
 .visually-hidden {
@@ -296,7 +339,9 @@ body {
     border: 0;
 }
 
-/* responsive */
+/* -------------------------------
+   Responsive Design
+-------------------------------- */
 @media (max-width: 1024px) {
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -329,7 +374,9 @@ body {
     .product-price {
         font-size: 1.2rem;
     }
-    .btn-add-to-cart {
+    .btn-add-to-cart,
+    .add-to-cart-form button,
+    .form.add-to-cart-form button {
         padding: 0.4rem 0.8rem;
         font-size: 0.75rem;
     }

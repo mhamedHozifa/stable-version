@@ -27,8 +27,6 @@ class CheckoutController extends Controller
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:500',
             'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'zip' => 'required|string|max:20',
             'country' => 'required|string|max:2',
         ]);
 
@@ -44,8 +42,6 @@ class CheckoutController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'city' => $request->city,
-            'state' => $request->state,
-            'zip' => $request->zip,
             'country' => $request->country,
         ];
 
